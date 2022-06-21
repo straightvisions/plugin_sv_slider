@@ -3,13 +3,13 @@
 	/**
 	 * @author			straightvisions GmbH
 	 * @package			sv100
-	 * @copyright       2020 straightvisions GmbH
+	 * @copyright       2022 straightvisions GmbH
 	 * @link			https://straightvisions.com
 	 * @since			1.4
 	 * @license			See license.txt or https://straightvisions.com
 	 */
 
-	namespace sv_plugin_boilerplate;
+	namespace sv_slider;
 	
 	if(!class_exists('\sv_core\core_plugin')) {
 		require_once(dirname(__FILE__) . '/lib/core_plugin/core_plugin.php');

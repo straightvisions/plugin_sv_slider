@@ -1,5 +1,5 @@
 <?php
-	namespace sv_plugin_boilerplate;
+	namespace sv_slider;
 	
 	class common extends modules {
 		public function __construct() {
@@ -7,7 +7,7 @@
 		}
 		
 		public function init() {
-			$this->set_section_title( __( 'Common', 'sv_plugin_boilerplate' ) )
+			$this->set_section_title( __( 'Common', 'sv_slider' ) )
 				->set_section_type( 'settings' )
 				->load_settings()
 				->get_root()->add_section( $this );

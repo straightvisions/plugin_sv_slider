@@ -1,4 +1,4 @@
-	SV Plugin Boilerplate
+	SV Slider
 	Code (c) 2022 straightvisions GmbH
 	Project Leader:  Dennis Heiden
 	Project Website: https://straightvisions.com

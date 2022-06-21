@@ -1,5 +1,5 @@
 <?php
-	namespace sv_plugin_boilerplate;
+	namespace sv_slider;
 	
 	class modules extends init {
 		public function __construct() {
