@@ -16,7 +16,7 @@
 
 		}
 		
-		protected function load_settings(): common{
+		protected function load_settings(): slider{
 			$this->get_setting( 'my_setting' )
 				->set_title( __( 'My Setting', 'sv100' ) )
 				->set_description( __( 'Some text', 'sv100' ) )

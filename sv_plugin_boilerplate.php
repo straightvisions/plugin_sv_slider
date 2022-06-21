@@ -3,7 +3,7 @@
 Version: 1.9.00
 Plugin Name: SV Slider
 Text Domain: sv_slider
-Description: Customer specific features which are too small and specific to worth an own plugin.
+Description: Gutenberg Block Slider
 Plugin URI: https://straightvisions.com/
 Author: straightvisions GmbH
 Author URI: https://straightvisions.com

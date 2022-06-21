@@ -7,6 +7,6 @@
 		}
 		
 		public function init() {
-			$this->load_module('common');
+			$this->load_module('slider');
 		}
 	}
