@@ -29,8 +29,7 @@
 		},
 		"loop": {
 			"type": "boolean"
-		},
-		
+		}
 	},
 	"supports": {
 		"anchor": true,
