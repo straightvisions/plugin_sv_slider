@@ -12,8 +12,8 @@
 		"@babel/plugin-transform-react-jsx": "^7.17.3",
 		"@babel/preset-env": "^7.17.10",
 		"@babel/preset-flow": "^7.17.12",
-		"ajv": "^8.11.0",
 		"@wordpress/icons": "^8.4.0",
+		"ajv": "^8.11.0",
 		"ajv-formats": "^2.1.1",
 		"ajv-keywords": "^5.1.0",
 		"babel-loader": "^8.2.5",
@@ -32,5 +32,8 @@
 		"react": "^17.0.0",
 		"react-dom": "^17.0.0"
 	},
-	"private": true
+	"private": true,
+	"dependencies": {
+		"swiffy-slider": "^1.5.3"
+	}
 }
