@@ -29,6 +29,10 @@
 		},
 		"loop": {
 			"type": "boolean"
+		},
+		"editMode": {
+			"type": "boolean",
+			"default": true
 		}
 	},
 	"supports": {
