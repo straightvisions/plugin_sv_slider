@@ -67,11 +67,7 @@
 				     ->set_path('lib/vendor/swiffy_slider/dist/js/swiffy-slider.js')
 				     ->set_type('js')
 				     ->set_is_enqueued();
-				
-				$this->get_script('sv_slider_js')
-				     ->set_path('lib/frontend/js/slider.js')
-				     ->set_type('js')
-				     ->set_is_enqueued();
+			
 			}
 			
 			return $this;
