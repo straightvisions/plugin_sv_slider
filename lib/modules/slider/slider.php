@@ -14,7 +14,7 @@
 				->load_settings()
 				->get_root()->add_section( $this );
 			
-			//add_action( 'init', array($this, 'register_block') );
+			add_action( 'init', array($this, 'register_block') );
 			add_action( 'init', array($this, 'register_scripts') );
 
 		}
@@ -33,7 +33,7 @@
 			
 			if ( is_string( $path ) && file_exists( $path ) ) {
 				register_block_type( $path,
-					array('render_callback' => array($this, 'render_block_wrapper')));
+					array( 'render_callback' => array($this, 'render_block_wrapper')) );
 			}
 			
 			return $this;
@@ -95,10 +95,29 @@
 			return $this;
 		}
 	
-		public function render_block_wrapper(array $props, string $content){
-			//$content = empty($content) ? $props['innerContent'] : $content;
+		public function render_block_wrapper(array $attributes, $content): string{
+			$content = empty($content) ? $attributes['innerContent'] : $content;
+			$tag = $attributes['tagName'] ? $attributes['tagName'] : 'div';
 			
-			return sprintf($content);
+			//@todo send script with server side output in editor - init swiffy - doesn't work right now
+			if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
+				$content .= '<script>swiffyslider.init();</script>';
+			}
+			
+			ob_start();
+			require($this->get_path('lib/frontend/tpl/slider.php'));
+			
+			return ob_get_clean();
+		}
+		
+		private function render_inner_blocks(array $children): string{
+			$inner_blocks = '';
+			
+			foreach($children as $key => $block){
+				$inner_blocks .= $block['originalContent'];
+			}
+			
+			return $inner_blocks;
 		}
 		
 	}

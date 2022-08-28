@@ -1,3 +1,13 @@
 .wp-block-straightvisions-sv-slider.swiffy-slider > .slider-container > *{
 	height:100%;
 }
+
+/* remove theme spacing */
+.wp-block-straightvisions-sv-slider.swiffy-slider{
+	padding:0 !important;
+}
+
+/* fix z-index */
+.wp-block-straightvisions-sv-slider.swiffy-slider .slider-nav{
+	z-index:1;
+}
