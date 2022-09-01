@@ -1,4 +1,4 @@
-<<?php echo $tag?> class="<?php echo $attributes['className'];?> align<?php echo $attributes['align'];?> slider-nav-animation slider-nav-visible slider-nav-dark ">
+<<?php echo $tag?> class="wp-block-straightvisions-sv-slider swiffy-slider <?php echo $attributes['className'];?> align<?php echo $attributes['align'];?> slider-nav-animation slider-nav-visible slider-nav-dark ">
 	<div class="slider-container">
 		<?php echo $content;?>
 	</div>
