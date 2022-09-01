@@ -1,0 +1,4 @@
+{
+	"allowedBlocks": ["core/group", "core/media-text", "core/image", "core/cover", "core/query" ],
+	"template": [["core/cover", {}]]
+}

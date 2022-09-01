@@ -33,6 +33,18 @@
 		"editMode": {
 			"type": "boolean",
 			"default": true
+		},
+		"innerBlocks": {
+			"type": "array",
+			"default": []
+		},
+		"innerContent": {
+			"type": "string",
+			"default": ""
+		},
+		"tagName": {
+			"type": "string",
+			"default": "div"
 		}
 	},
 	"supports": {
