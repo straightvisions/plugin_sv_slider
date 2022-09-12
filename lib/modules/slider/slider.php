@@ -107,7 +107,7 @@ class slider extends modules {
 
         ob_start();
         // output css styles
-        echo '<style>' . $this->get_css($attributes['svSlider']) . '</style>';
+        echo '<style>' . $this->get_css( json_decode( $attributes['svSlider'], true ) ) . '</style>';
         // output template
         require($this->get_path('lib/frontend/tpl/slider.php'));
 
