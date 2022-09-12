@@ -6,7 +6,12 @@
 	"icon": "slides",
 	"category": "media",
 	"description": "Create a slick and responsive Slider.",
-	"keywords": [ "video", "image", "gallery", "slider" ],
+	"keywords": [
+		"video",
+		"image",
+		"gallery",
+		"slider"
+	],
 	"textdomain": "sv-slider",
 	"editorScript": "sv-slider-editor-script",
 	"editorStyle": "sv-slider-editor-style",
@@ -45,10 +50,17 @@
 		"tagName": {
 			"type": "string",
 			"default": "div"
+		},
+		"svSlider": {
+			"type": "array",
+			"default": {}
 		}
 	},
 	"supports": {
 		"anchor": true,
-		"align": [ "full", "wide" ]
+		"align": [
+			"full",
+			"wide"
+		]
 	}
 }
