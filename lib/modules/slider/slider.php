@@ -74,6 +74,9 @@ class slider extends modules {
                  ->set_is_backend()
                  ->set_type('js')
                  ->set_is_enqueued();
+
+            $this->get_script('editor_components')
+                 ->set_is_backend()->set_is_gutenberg()->set_path('lib/backend/css/common/editor_components.css');
         } else {
             $this->get_script('sv_slider_swiffy_slider_css')
                  ->set_path('lib/frontend/css/swiffy-slider.min.css')
@@ -107,7 +110,7 @@ class slider extends modules {
 
         ob_start();
         // output css styles
-        echo '<style>' . $this->get_css( json_decode( $attributes['svSlider'], true ) ) . '</style>';
+        echo '<style>' . $this->get_css(json_decode($attributes['svSlider'], true)) . '</style>';
         // output template
         require($this->get_path('lib/frontend/tpl/slider.php'));
 
@@ -234,13 +237,13 @@ class slider extends modules {
 
         // set portrait orientation if key is not mobile or desktop
         if (in_array($breakpoint_key, ['mobile', 'desktop']) === false) {
-            $output = ' and orientation(portrait)';
+            $output = ' and (orientation: portrait)';
         }
 
         // @todo replace this later with str_contains (PHP8)
         // change orientation to landscape if key contains "landscape"
         if (strpos($breakpoint_key, 'landscape') !== false) {
-            $output = ' and orientation(landscape)';
+            $output = ' and (orientation: landscape)';
         }
 
         return $output;
