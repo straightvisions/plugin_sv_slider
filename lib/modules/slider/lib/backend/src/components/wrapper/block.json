@@ -23,18 +23,6 @@
 		"controls": {
 			"type": "boolean"
 		},
-		"arrows": {
-			"type": "boolean"
-		},
-		"bullets": {
-			"type": "boolean"
-		},
-		"autoplay": {
-			"type": "boolean"
-		},
-		"loop": {
-			"type": "boolean"
-		},
 		"editMode": {
 			"type": "boolean",
 			"default": true
@@ -53,7 +41,28 @@
 		},
 		"svSlider": {
 			"type": "array",
-			"default": {}
+			"default": {
+				"blockId": "",
+				"layout": {
+					"Mobile": "1",
+					"MobileLandscape": "1",
+					"Tablet": "1",
+					"TabletLandscape": "1",
+					"TabletPro": "1",
+					"TabletProLandscape": "1",
+					"Desktop": "1"
+				},
+				"layoutReveal": {
+					"Mobile": "1",
+					"MobileLandscape": "1",
+					"Tablet": "1",
+					"TabletLandscape": "1",
+					"TabletPro": "1",
+					"TabletProLandscape": "1",
+					"Desktop": "1"
+				},
+				"_currentResponsiveTab": "Mobile"
+			}
 		}
 	},
 	"supports": {
