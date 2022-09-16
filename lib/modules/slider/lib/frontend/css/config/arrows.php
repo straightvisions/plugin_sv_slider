@@ -77,11 +77,10 @@ class arrows{
             $this->selector . ' .slider-nav::after' => $this->reset_square_after,
             // resets------------------------------------------------------------
             $this->selector . ' .slider-nav::after' =>
-                'mask: '.$mask . '-webkit-mask: '. $mask,
+                'mask: '.$mask . '-webkit-mask: '. $mask
+                .'background-color: var(--swiffy-slider-nav-dark);width: 1.75rem;height: 1.75rem;',
             $this->selector . ' .slider-nav::before' =>
-                'background-color: var(--swiffy-slider-nav-light);border-radius: 50%;',
-            $this->selector . ' .slider-nav::after' =>
-                'background-color: var(--swiffy-slider-nav-dark);width: 1.75rem;height: 1.75rem;',
+                'background-color: var(--swiffy-slider-nav-light);border-radius: 0;',
             //...
         ];
 
