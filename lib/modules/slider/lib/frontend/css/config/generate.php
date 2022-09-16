@@ -21,7 +21,14 @@ class css_generator{
             $output .= '}';
         }
 
+        // clean up
+        $this->flush();
+
         return $output;
+    }
+
+    private function flush(){
+        $this->css_list = [];
     }
 
     private function parse(array $data){
@@ -66,5 +73,10 @@ class css_generator{
        return $generator->get($key, $val);
     }
 
+    private function __swiffy_slider_arrows(string $key, string $val){
+        require_once($this->get_path('arrows.php'));
+        $generator = new css_generator\arrows($this->selector);
 
+        return $generator->{'get_' . str_replace('-', '_', $val)}();
+    }
 }
