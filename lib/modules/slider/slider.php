@@ -209,7 +209,7 @@ class slider extends modules {
         $values = $this->normalize_array_keys($values);
 
         foreach ($list as $breakpoint => &$arr) {
-            if (isset($values[$breakpoint])) {
+            if (isset($values[$breakpoint]) && empty($values[$breakpoint]) === false) {
                 $arr[$css_var_name] = $values[$breakpoint];
             }
         }
