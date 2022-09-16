@@ -4,8 +4,8 @@ namespace sv_slider;
 
 class slider extends modules {
     private $css_selector = '';
-
-    public function __construct() {}
+    private $class_selector = '';
+    private $css_generator = null;
 
     public function init() {
         $this->set_section_title(__('Slider', 'sv_slider'))
@@ -46,7 +46,7 @@ class slider extends modules {
             $config = json_decode(ob_get_clean());
 
             $this->get_script('sv_slider_editor_script')
-                 ->set_path('lib/backend/dist/block.build.js')
+                 ->set_path('lib/backend/js/block.build.js')
                  ->set_type('js')
                  ->set_is_gutenberg()
                  ->set_is_backend()
@@ -95,24 +95,37 @@ class slider extends modules {
         return $this;
     }
 
+    private function get_css_generator(){
+        // import helper class
+        if($this->css_generator === null){
+            require_once($this->get_path('lib/frontend/css/config/generate.php'));
+            $this->css_generator = new css_generator($this->css_selector);
+        }
+
+        return $this->css_generator;
+    }
+
     // SERVER SIDE RENDERING ---------------------------------------------------------------------
     // SERVER SIDE RENDERING ---------------------------------------------------------------------
     // SERVER SIDE RENDERING ---------------------------------------------------------------------
 
     public function render_block_wrapper(array $attributes, $content): string {
+        // set root selector
         $this->css_selector = $this->assign_css_selector($attributes);
+
         $content            = empty($content) ? $attributes['innerContent'] : $content;
         $tag                = $attributes['tagName'] ? $attributes['tagName'] : 'div';
+        $settings           = json_decode($attributes['svSlider'], true);
         //@todo send script with server side output in editor - init swiffy - doesn't work right now
         if (defined('REST_REQUEST') && REST_REQUEST) {
             $content .= '<script>swiffyslider.init();</script>';
         }
 
         ob_start();
-        // output css styles
-        echo '<style>' . $this->get_css(json_decode($attributes['svSlider'], true)) . '</style>';
         // output template
         require($this->get_path('lib/frontend/tpl/slider.php'));
+        // output css vars
+        echo '<style>' . $this->get_css_vars($settings) . '</style>';
 
         return ob_get_clean();
     }
@@ -122,12 +135,15 @@ class slider extends modules {
             substr(md5(mt_rand()), 0, 7) :
             $attributes['svSlider']['blockId'];
 
+        // set the class for injection in template
+        $this->class_selector = 'wp-block-straightvisions-sv-slider-' . $blockId;
+
         // very important
-        return 'wp-block-straightvisions-sv-slider-' . $blockId;
+        return '.swiffy-slider.wp-block-straightvisions-sv-slider-' . $blockId;
     }
 
-    // CSS PIPE STEP 0 ---------------------------------------------------------------------
-    private function get_css($data): string {
+    // CSS PIPE STEP 0A ---------------------------------------------------------------------
+    private function get_css_vars($data): string {
         $output = '';
         $list   = $this->get_media_query_list($data);
 
@@ -193,7 +209,7 @@ class slider extends modules {
         $values = $this->normalize_array_keys($values);
 
         foreach ($list as $breakpoint => &$arr) {
-            if (isset($values[$breakpoint])) {
+            if (isset($values[$breakpoint]) && empty($values[$breakpoint]) === false) {
                 $arr[$css_var_name] = $values[$breakpoint];
             }
         }
@@ -214,13 +230,9 @@ class slider extends modules {
                 $output .= '@media(min-width: ' . $breakpoints[$breakpoint_key] . 'px)';
                 $output .= $this->get_media_query_orientation($breakpoint_key);
                 $output .= '{';
-                // element rule block start
-                $output .= '.swiffy-slider.' . $this->css_selector . '{';
-                foreach ($values as $var_name => $var_val) {
-                    $output .= $var_name . ':' . $var_val . ';';
-                }
-                $output .= '}';
-                // element rule block end;
+                // element rule block start ------------------------------
+                $output .= $this->get_css_generator()->get_css($values);
+                // element rule block end; -------------------------------
                 $output .= '}';
                 // media query block end
             }

@@ -2,11 +2,11 @@
 .sv-slider-controls-panel .clickable:hover{
 	cursor:pointer;
 }
-.sv-slider-controls-panel .sv-slider-panelbody > .components-tab-panel__tabs{
+.sv-slider-controls-panel .components-tab-panel__tabs{
 	margin-bottom:10px;
 }
 
-.sv-slider-controls-panel .sv-slider-panelbody .components-tab-panel__tabs-item.tab-icon{
+.sv-slider-controls-panel .components-tab-panel__tabs-item.tab-icon{
 	padding:3px;
 	height:34px;
 }
@@ -22,10 +22,6 @@
 .sv-slider-controls-panel .components-panel__row .block-editor-link-control{
 	max-width:100%;
 	min-width:100%;
-}
-
-.sv-slider-controls-panel .components-panel__row .components-flex > div > *{
-	margin-bottom:0 !important;
 }
 
 .sv-slider-controls-panel .components-panel__row .components-flex .components-flex-item > .component-color-indicator{

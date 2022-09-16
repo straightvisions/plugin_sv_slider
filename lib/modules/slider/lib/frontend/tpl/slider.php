@@ -2,7 +2,7 @@
 echo $tag ?> class="wp-block-straightvisions-sv-slider swiffy-slider <?php
 echo $attributes['className']; ?> align<?php
 echo $attributes['align']; ?> <?php
-echo $this->css_selector; ?> slider-nav-animation slider-nav-visible slider-nav-dark">
+echo $this->class_selector; ?> slider-nav-animation slider-nav-visible slider-nav-dark">
 
 <div class="slider-container">
     <?php
