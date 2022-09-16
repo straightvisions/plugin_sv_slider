@@ -46,7 +46,7 @@ class slider extends modules {
             $config = json_decode(ob_get_clean());
 
             $this->get_script('sv_slider_editor_script')
-                 ->set_path('lib/backend/dist/block.build.js')
+                 ->set_path('lib/backend/js/block.build.js')
                  ->set_type('js')
                  ->set_is_gutenberg()
                  ->set_is_backend()
