@@ -23,6 +23,12 @@
 		"controls": {
 			"type": "boolean"
 		},
+		"className": {
+			"type": "string"
+		},
+		"align": {
+			"type": "string"
+		},
 		"innerBlocks": {
 			"type": "array",
 			"default": []
