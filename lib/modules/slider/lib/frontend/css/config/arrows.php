@@ -29,9 +29,9 @@ class arrows{
         // custom stuff
         $list[$this->selector . ' .slider-nav::after'] .= 'mask: '.$mask . '-webkit-mask: '. $mask;
         $list[$this->selector . ' .slider-nav::after'] .=
-            'background-color: var(--swiffy-slider-arrows-color-background);width: 2rem;height: 2rem;margin: .5rem;';
+            'background-color: var(--swiffy-slider-arrows-color);width: 2rem;height: 2rem;margin: .5rem;';
         $list[$this->selector . ' .slider-nav::before'] .=
-            'background-color: var(--swiffy-slider-arrows-color);border-radius: 50%;';
+            'background-color: var(--swiffy-slider-arrows-color-background);border-radius: 50%;';
 
         return $list;
     }
@@ -52,9 +52,9 @@ class arrows{
         // custom stuff
         $list[$this->selector . ' .slider-nav::after'] .= 'mask: '.$mask . '-webkit-mask: '. $mask;
         $list[$this->selector . ' .slider-nav::after'] .=
-            'background-color: var(--swiffy-slider-arrows-color-background);width: 1.75rem;height: 1.75rem;';
+            'background-color: var(--swiffy-slider-arrows-color);width: 1.75rem;height: 1.75rem;';
         $list[$this->selector . ' .slider-nav::before'] .=
-            'background-color: var(--swiffy-slider-arrows-color);border-radius: 0;';
+            'background-color: var(--swiffy-slider-arrows-color-background);border-radius: 0;';
 
         return $list;
     }
