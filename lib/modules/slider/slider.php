@@ -292,11 +292,11 @@ class slider extends modules {
         $data = [];
 
         if(isset($slider_attributes['--swiffy-slider-data-autoplay-timeout'])){
-            $data['data-slider-nav-autoplay-interval'] =
-                ':"' . (int)$slider_attributes['--swiffy-slider-data-autoplay-timeout'] . '"';
+            $data[] = 'data-slider-nav-autoplay-interval="'
+                . (int)$slider_attributes['--swiffy-slider-data-autoplay-timeout']
+                . '"';
         }
-        echo "<pre>";
-        var_dump($attributes);die;
+
         return implode(' ', $data);
     }
 
