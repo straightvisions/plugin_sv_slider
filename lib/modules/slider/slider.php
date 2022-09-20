@@ -66,6 +66,8 @@ class slider extends modules {
 
             $this->get_script('sv_slider_common_css')
                  ->set_path('lib/frontend/css/common.css')
+                ->set_is_gutenberg()
+                ->set_is_backend()
                  ->set_is_enqueued();
 
             $this->get_script('sv_slider_swiffy_slider_js')
