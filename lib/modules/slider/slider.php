@@ -112,10 +112,12 @@ class slider extends modules {
     public function render_block_wrapper(array $attributes, $content): string {
         // set root selector
         $this->css_selector = $this->assign_css_selector($attributes);
-
         $content            = empty($content) ? $attributes['innerContent'] : $content;
         $tag                = $attributes['tagName'] ? $attributes['tagName'] : 'div';
-        $settings           = json_decode($attributes['svSlider'], true);
+        $attributes['svSlider'] = json_decode($attributes['svSlider'], true);
+        $attributes['className'] = $this->populate_class_name($attributes);
+        $attributes['_data'] = $this->populate_data_attributes($attributes);
+
         //@todo send script with server side output in editor - init swiffy - doesn't work right now
         if (defined('REST_REQUEST') && REST_REQUEST) {
             $content .= '<script>swiffyslider.init();</script>';
@@ -125,7 +127,7 @@ class slider extends modules {
         // output template
         require($this->get_path('lib/frontend/tpl/slider.php'));
         // output css vars
-        echo '<style>' . $this->get_css_vars($settings) . '</style>';
+        echo '<style>' . $this->get_css_vars($attributes['svSlider']) . '</style>';
 
         return ob_get_clean();
     }
@@ -269,6 +271,33 @@ class slider extends modules {
         }
 
         return $inner_blocks;
+    }
+
+    private function populate_class_name(array $attributes){
+        $slider_attributes = $attributes['svSlider'];
+        $class_name = $attributes['className'] ?? '';
+
+        // autoplay static class
+        $class_name .= isset($slider_attributes['--swiffy-slider-class-autoplay'])
+                      && $slider_attributes['--swiffy-slider-class-autoplay'] === true ? ' slider-nav-autoplay' : '';
+
+        $class_name .= isset($slider_attributes['--swiffy-slider-class-autopause'])
+                       && $slider_attributes['--swiffy-slider-class-autopause'] === true ? ' slider-nav-autopause' : '';
+
+        return $class_name;
+    }
+
+    private function populate_data_attributes(array $attributes){
+        $slider_attributes = $attributes['svSlider'];
+        $data = [];
+
+        if(isset($slider_attributes['--swiffy-slider-data-autoplay-timeout'])){
+            $data['data-slider-nav-autoplay-interval'] =
+                ':"' . (int)$slider_attributes['--swiffy-slider-data-autoplay-timeout'] . '"';
+        }
+        echo "<pre>";
+        var_dump($attributes);die;
+        return implode(' ', $data);
     }
 
 }
