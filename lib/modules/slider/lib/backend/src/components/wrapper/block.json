@@ -23,6 +23,12 @@
 		"controls": {
 			"type": "boolean"
 		},
+		"className": {
+			"type": "string"
+		},
+		"align": {
+			"type": "string"
+		},
 		"innerBlocks": {
 			"type": "array",
 			"default": []
@@ -45,7 +51,7 @@
 		},
 		"svSlider": {
 			"type": "string",
-			"default": "{}"
+			"default": "\"{\\\"blockId\\\":\\\"\\\",\\\"--swiffy-slider-item-count\\\":{\\\"Mobile\\\":\\\"1\\\",\\\"MobileLandscape\\\":\\\"\\\",\\\"Tablet\\\":\\\"\\\",\\\"TabletLandscape\\\":\\\"\\\",\\\"TabletPro\\\":\\\"\\\",\\\"TabletProLandscape\\\":\\\"\\\",\\\"Desktop\\\":\\\"\\\"},\\\"--swiffy-slider-item-reveal\\\":{\\\"Mobile\\\":\\\"\\\",\\\"MobileLandscape\\\":\\\"\\\",\\\"Tablet\\\":\\\"\\\",\\\"TabletLandscape\\\":\\\"\\\",\\\"TabletPro\\\":\\\"\\\",\\\"TabletProLandscape\\\":\\\"\\\",\\\"Desktop\\\":\\\"\\\"},\\\"--swiffy-slider-item-gap\\\":{\\\"Mobile\\\":\\\"1rem\\\",\\\"MobileLandscape\\\":\\\"\\\",\\\"Tablet\\\":\\\"\\\",\\\"TabletLandscape\\\":\\\"\\\",\\\"TabletPro\\\":\\\"\\\",\\\"TabletProLandscape\\\":\\\"\\\",\\\"Desktop\\\":\\\"\\\"},\\\"--swiffy-slider-item-ratio\\\":{\\\"Mobile\\\":\\\"16/9\\\",\\\"MobileLandscape\\\":\\\"\\\",\\\"Tablet\\\":\\\"\\\",\\\"TabletLandscape\\\":\\\"\\\",\\\"TabletPro\\\":\\\"\\\",\\\"TabletProLandscape\\\":\\\"\\\",\\\"Desktop\\\":\\\"\\\"},\\\"--swiffy-slider-snap-align\\\":{\\\"Mobile\\\":\\\"center\\\",\\\"MobileLandscape\\\":\\\"\\\",\\\"Tablet\\\":\\\"\\\",\\\"TabletLandscape\\\":\\\"\\\",\\\"TabletPro\\\":\\\"\\\",\\\"TabletProLandscape\\\":\\\"\\\",\\\"Desktop\\\":\\\"\\\"},\\\"--swiffy-slider-arrows\\\":{\\\"Mobile\\\":\\\"chevron\\\",\\\"MobileLandscape\\\":\\\"\\\",\\\"Tablet\\\":\\\"\\\",\\\"TabletLandscape\\\":\\\"\\\",\\\"TabletPro\\\":\\\"\\\",\\\"TabletProLandscape\\\":\\\"\\\",\\\"Desktop\\\":\\\"\\\"},\\\"--swiffy-slider-arrows-color\\\":{\\\"Mobile\\\":\\\"#ffffff\\\",\\\"MobileLandscape\\\":\\\"\\\",\\\"Tablet\\\":\\\"\\\",\\\"TabletLandscape\\\":\\\"\\\",\\\"TabletPro\\\":\\\"\\\",\\\"TabletProLandscape\\\":\\\"\\\",\\\"Desktop\\\":\\\"\\\"},\\\"--swiffy-slider-arrows-color-background\\\":{\\\"Mobile\\\":\\\"\\\",\\\"MobileLandscape\\\":\\\"\\\",\\\"Tablet\\\":\\\"\\\",\\\"TabletLandscape\\\":\\\"\\\",\\\"TabletPro\\\":\\\"\\\",\\\"TabletProLandscape\\\":\\\"\\\",\\\"Desktop\\\":\\\"\\\"},\\\"--swiffy-slider-arrows-display\\\":{\\\"Mobile\\\":\\\"flex\\\",\\\"MobileLandscape\\\":\\\"\\\",\\\"Tablet\\\":\\\"\\\",\\\"TabletLandscape\\\":\\\"\\\",\\\"TabletPro\\\":\\\"\\\",\\\"TabletProLandscape\\\":\\\"\\\",\\\"Desktop\\\":\\\"\\\"},\\\"--swiffy-slider-class-autoplay\\\":true,\\\"--swiffy-slider-class-autopause\\\":true,\\\"--swiffy-slider-data-autoplay-timeout\\\":\\\"2500\\\"}\""
 		}
 	},
 	"supports": {

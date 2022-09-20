@@ -16,6 +16,7 @@
 
 /* fix z-index */
 .wp-block-straightvisions-sv-slider.swiffy-slider .slider-nav {
+	display: var(--swiffy-slider-arrows-display);
 	z-index: 1;
 }
 

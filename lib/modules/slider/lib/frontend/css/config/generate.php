@@ -5,7 +5,9 @@ class css_generator{
     private $css_list = [];
     private $selector = '';
 
-    public function __construct(string $selector = ''){
+    public function __construct(){}
+
+    public function init(string $selector = ''){
         $this->selector = $selector;
     }
 
