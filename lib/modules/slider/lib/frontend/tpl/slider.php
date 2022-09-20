@@ -1,7 +1,7 @@
 <<?php
 echo $tag ?> class="wp-block-straightvisions-sv-slider swiffy-slider slider-nav-visible<?php
 echo $attributes['className']; ?> align<?php
-echo $attributes['align']; ?> <?php
+echo isset($attributes['align']) ? $attributes['align'] : ''; ?> <?php
 echo $this->class_selector; ?> " <?php
 echo $attributes['_data']; ?>>
 
