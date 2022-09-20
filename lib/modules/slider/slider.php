@@ -101,8 +101,11 @@ class slider extends modules {
         // import helper class
         if($this->css_generator === null){
             require_once($this->get_path('lib/frontend/css/config/generate.php'));
-            $this->css_generator = new css_generator($this->css_selector);
+            $this->css_generator = new css_generator();
         }
+
+        // apply current id - support multiple slider
+        $this->css_generator->init($this->css_selector);
 
         return $this->css_generator;
     }
