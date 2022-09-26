@@ -289,6 +289,8 @@ class slider extends modules {
         $class_name .= isset($slider_attributes['--swiffy-slider-class-autopause'])
                        && $slider_attributes['--swiffy-slider-class-autopause'] === true ? ' slider-nav-autopause' : '';
 
+        $class_name .= $this->item_ratio_is_set($slider_attributes) ? ' slider-item-ratio' : '';
+
         return $class_name;
     }
 
@@ -303,6 +305,24 @@ class slider extends modules {
         }
 
         return implode(' ', $data);
+    }
+
+    private function item_ratio_is_set(array $slider_attributes): bool {
+        $output = false;
+
+        if(isset($slider_attributes['--swiffy-slider-item-ratio'])
+           && is_array($slider_attributes['--swiffy-slider-item-ratio'])){
+
+            foreach($slider_attributes['--swiffy-slider-item-ratio'] as $key => $val){
+                if(empty($val) === false){
+                    $output = true;
+                    break;
+                }
+            }
+
+        }
+
+        return $output;
     }
 
 }
