@@ -12,6 +12,7 @@
 
 .wp-block-straightvisions-sv-slider.swiffy-slider > .slider-container > * {
 	height: 100%;
+	overflow:hidden;
 }
 
 /* fix z-index */
