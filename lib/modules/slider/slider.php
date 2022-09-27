@@ -59,7 +59,7 @@ class slider extends modules {
                  ->set_is_enqueued();
 
             $this->get_script('sv_slider_swiffy_slider_css')
-                 ->set_path('lib/frontend/css/swiffy-slider.min.css')
+                 ->set_path('lib/frontend/css/swiffy-slider-modified.css')
                  ->set_is_gutenberg()
                  ->set_is_backend()
                  ->set_is_enqueued();
@@ -81,7 +81,7 @@ class slider extends modules {
                  ->set_is_backend()->set_is_gutenberg()->set_path('lib/backend/css/common/editor_components.css');
         } else {
             $this->get_script('sv_slider_swiffy_slider_css')
-                 ->set_path('lib/frontend/css/swiffy-slider.min.css')
+                 ->set_path('lib/frontend/css/swiffy-slider-modified.css')
                  ->set_is_enqueued();
 
             $this->get_script('sv_slider_common_css')
@@ -115,6 +115,7 @@ class slider extends modules {
     // SERVER SIDE RENDERING ---------------------------------------------------------------------
 
     public function render_block_wrapper(array $attributes, $content): string {
+
         // set root selector
         $this->css_selector = $this->assign_css_selector($attributes);
         $content            = empty($content) ? $attributes['innerContent'] : $content;

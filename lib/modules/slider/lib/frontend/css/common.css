@@ -15,6 +15,81 @@
 	overflow:hidden;
 }
 
+/* gutenberg specific mods - global */
+.slider-item-ratio .slider-container>*:not(.wp-block-media-text)::after {
+	display: block;
+	padding-top: calc( 100% / (var(--swiffy-slider-item-ratio)));
+	content: "";
+}
+
+/* gutenberg specific mods - images */
+.slider-item-ratio .slider-container > .wp-block-image > picture,
+.slider-item-ratio .slider-container > .wp-block-image > picture > img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+/* gutenberg specific mods - covers */
+.slider-item-ratio .slider-container > .wp-block-cover{
+	min-height:revert;
+}
+
+.slider-item-ratio .slider-container > .wp-block-cover > picture > img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+/* gutenberg specific mods - media-text */
+.slider-item-ratio .slider-container > .wp-block-media-text > figure:after {
+	display: block;
+	padding-top: calc( 100% / (var(--swiffy-slider-item-ratio)));
+	content: "";
+}
+
+.slider-item-ratio .slider-container > .wp-block-media-text,
+.slider-item-ratio .slider-container > .wp-block-media-text.is-image-fill .wp-block-media-text__media {
+	min-height:revert;
+}
+
+.slider-item-ratio .slider-container > .wp-block-media-text > figure > img,
+.slider-item-ratio .slider-container > .wp-block-media-text.is-image-fill figure.wp-block-media-text__media > img {
+	position: absolute !important;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 0px !important;
+	object-fit: cover;
+}
+
+/* gutenberg specific mods - media-text - imagify mod */
+.slider-item-ratio .slider-container > .wp-block-media-text > figure > picture,
+.slider-item-ratio .slider-container > .wp-block-media-text > figure > picture > img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 0px !important;
+	object-fit: cover;
+}
+
+/* gutenberg specific mods - group - experimental */
+.slider-item-ratio .slider-container > .wp-block-group > * {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100% !important;
+	object-fit: cover;
+}
+
 /* fix z-index */
 .wp-block-straightvisions-sv-slider.swiffy-slider .slider-nav {
 	display: var(--swiffy-slider-arrows-display);
