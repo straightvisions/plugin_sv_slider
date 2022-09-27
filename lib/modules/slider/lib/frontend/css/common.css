@@ -90,7 +90,17 @@
 	object-fit: cover;
 }
 
-/* fix z-index */
+/* gutenberg specific mods - query - experimental */
+.slider-item-ratio .slider-container > .wp-block-query > *{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100% !important;
+	object-fit: cover;
+}
+	
+	/* fix z-index */
 .wp-block-straightvisions-sv-slider.swiffy-slider .slider-nav {
 	display: var(--swiffy-slider-arrows-display);
 	z-index: 1;
