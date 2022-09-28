@@ -16,7 +16,7 @@
 }
 
 /* gutenberg specific mods - global */
-.slider-item-ratio .slider-container>*:not(.wp-block-media-text)::after {
+.slider-item-ratio .slider-container>*:not(.wp-block-media-text):not(.wp-block-group)::after {
 	display: block;
 	padding-top: calc( 100% / (var(--swiffy-slider-item-ratio)));
 	content: "";
@@ -65,7 +65,7 @@
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 0px !important;
+	height: 0 !important;
 	object-fit: cover;
 }
 
@@ -76,18 +76,15 @@
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 0px !important;
+	height: 0 !important;
 	object-fit: cover;
 }
 
 /* gutenberg specific mods - group - experimental */
-.slider-item-ratio .slider-container > .wp-block-group > * {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100% !important;
-	object-fit: cover;
+.slider-item-ratio .slider-container > .wp-block-group{
+	overflow-x:hidden;
+	height:100%;
+	max-height: calc( 100% / (var(--swiffy-slider-item-ratio))) !important;
 }
 
 /* gutenberg specific mods - query - experimental */
