@@ -105,7 +105,6 @@
 
 /* fix mobile */
 @media (max-width: 62rem){ /* must be max-width - depends on native swiffy code */
-	.wp-block-straightvisions-sv-slider.swiffy-slider .slider-nav::after,
 	.wp-block-straightvisions-sv-slider.swiffy-slider .slider-nav::after {
 		width: 1.75rem !important;
 		height: 1.75rem !important;

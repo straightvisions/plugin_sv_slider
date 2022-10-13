@@ -52,7 +52,7 @@ class arrows{
         // custom stuff
         $list[$this->selector . ' .slider-nav::after'] .= 'mask: '.$mask . '-webkit-mask: '. $mask;
         $list[$this->selector . ' .slider-nav::after'] .=
-            'background-color: var(--swiffy-slider-arrows-color);width: 1.75rem;height: 1.75rem;';
+            'background-color: var(--swiffy-slider-arrows-color);';
         $list[$this->selector . ' .slider-nav::before'] .=
             'background-color: var(--swiffy-slider-arrows-color-background);border-radius: 0;';
 
