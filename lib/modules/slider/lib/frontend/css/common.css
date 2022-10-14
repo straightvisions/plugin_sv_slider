@@ -23,8 +23,14 @@
 }
 
 /* gutenberg specific mods - images */
+.wp-block-straightvisions-sv-slider .slider-container > .wp-block-image{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .slider-item-ratio .slider-container > .wp-block-image > picture,
-.slider-item-ratio .slider-container > .wp-block-image > picture > img {
+.slider-item-ratio .slider-container > .wp-block-image > img {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -97,7 +103,7 @@
 	object-fit: cover;
 }
 	
-	/* fix z-index */
+/* fix z-index */
 .wp-block-straightvisions-sv-slider.swiffy-slider .slider-nav {
 	display: var(--swiffy-slider-arrows-display);
 	z-index: 1;
