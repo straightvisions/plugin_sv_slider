@@ -115,11 +115,11 @@ class slider extends modules {
     // SERVER SIDE RENDERING ---------------------------------------------------------------------
 
     public function render_block_wrapper(array $attributes, $content): string {
-
         // set root selector
         $this->css_selector = $this->assign_css_selector($attributes);
         $content            = empty($content) ? $attributes['innerContent'] : $content;
         $tag                = $attributes['tagName'] ? $attributes['tagName'] : 'div';
+        $id                 = $attributes['anchor'] ? ' id="'.$attributes['anchor'].'" ' : '';
         $attributes['svSlider'] = json_decode($attributes['svSlider'], true);
         $attributes['className'] = $this->populate_class_name($attributes);
         $attributes['_data'] = $this->populate_data_attributes($attributes);
