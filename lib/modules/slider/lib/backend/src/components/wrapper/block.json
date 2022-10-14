@@ -24,7 +24,12 @@
 			"type": "boolean"
 		},
 		"className": {
-			"type": "string"
+			"type": "string",
+			"default": "wp-block-straightvisions-sv-slider"
+		},
+		"anchor": {
+			"type": "string",
+			"default": ""
 		},
 		"align": {
 			"type": "string"
