@@ -290,7 +290,7 @@ class slider extends modules {
         $class_name .= isset($slider_attributes['--swiffy-slider-class-autopause'])
                        && $slider_attributes['--swiffy-slider-class-autopause'] === true ? ' slider-nav-autopause' : '';
 
-        $class_name .= $this->item_ratio_is_set($slider_attributes) ? ' slider-item-ratio' : '';
+        $class_name .= $this->item_ratio_is_set((array)$slider_attributes) ? ' slider-item-ratio' : '';
 
         return $class_name;
     }
