@@ -20,6 +20,10 @@
 	overflow:hidden;
 }
 
+.wp-block-straightvisions-sv-slider.swiffy-slider > .slider-indicators{
+	z-index:2;
+}
+
 .wp-block-straightvisions-sv-slider.swiffy-slider > .slider-indicators > *{
 	background-color: var(--swiffy-slider-indicators-color);
 }
