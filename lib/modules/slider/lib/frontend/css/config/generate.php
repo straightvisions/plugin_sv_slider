@@ -35,6 +35,7 @@ class css_generator{
 
     private function parse(array $data){
         foreach($data as $key => $val){
+
             $method = $this->get_method_name_from_key($key);
             if(method_exists($this, $method)){
                 $this->add_to_css_list( $this->{$method}($key, $val) );

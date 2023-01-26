@@ -41,7 +41,9 @@ $classnames = implode(' ', array_filter([
 
 	$count = isset($attributes['svSlider']['childrenCount']) && (int)$attributes['svSlider']['childrenCount'] > 0 ? (int)$attributes['svSlider']['childrenCount'] : 1;
 
-	for($i = 1; $i <= $count; $i++){
+    $indicators .= '<li class="active"></li>';
+
+	for($i = 2; $i <= $count; $i++){
         $indicators .= '<li></li>';
 	}
 

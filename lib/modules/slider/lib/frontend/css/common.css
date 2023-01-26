@@ -9,11 +9,23 @@
 	--swiffy-slider-nav-mask-caret-filled: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 16 16'><path d='m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z'></path></svg>");
 	--swiffy-slider-nav-mask-chevron: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 16 16'><path fill-rule='evenodd' d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'></path></svg>");
 	--swiffy-slider-nav-mask-chevron-compact: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 16 16'><path fill-rule='evenodd' d='M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223z'></path></svg>");
+	/* custom vars */
+	--swiffy-slider-indicators-color: #FFFFFF;
+	--swiffy-slider-indicators-color-active: #00000;
+	
 }
 
 .wp-block-straightvisions-sv-slider.swiffy-slider > .slider-container > * {
 	height: 100%;
 	overflow:hidden;
+}
+
+.wp-block-straightvisions-sv-slider.swiffy-slider > .slider-indicators > *{
+	background-color: var(--swiffy-slider-indicators-color);
+}
+
+.wp-block-straightvisions-sv-slider.swiffy-slider > .slider-indicators > .active{
+	background-color: var(--swiffy-slider-indicators-color-active);
 }
 
 /* gutenberg specific mods - global */

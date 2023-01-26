@@ -171,7 +171,9 @@ class slider extends modules {
             // check for non css responsive attribute values like blockId
             if (is_array($values)) {
                 $list = $this->assign_values_to_breakpoints($list, $css_var_name, $values);
+                continue;
             }
+
         }
 
         return $list;
