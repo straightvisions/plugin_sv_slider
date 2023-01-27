@@ -4,11 +4,22 @@
 		"core/media-text",
 		"core/image",
 		"core/cover",
-		"core/query"
+		"core/query",
+		"core/post-template"
+	],
+	"allowedQueryBlocks": [
+		"core/query",
+		"core/post-template"
 	],
 	"template": [
 		[
 			"core/cover",
+			{}
+		]
+	],
+	"templateQuery": [
+		[
+			"core/query",
 			{}
 		]
 	]

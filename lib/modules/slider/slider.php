@@ -135,7 +135,11 @@ class slider extends modules {
         if($children_count > 0){
             ob_start();
             // output template
-            require($this->get_path('lib/frontend/tpl/slider.php'));
+            if(isset( $attributes['svSlider']['isQuerySlider'] ) && $attributes['svSlider']['isQuerySlider'] === true ){
+                require($this->get_path('lib/frontend/tpl/slider_query.php'));
+            }else{
+                require($this->get_path('lib/frontend/tpl/slider.php'));
+            }
             // output css vars
             echo '<style>' . $this->get_css_vars($attributes['svSlider']) . '</style>';
 
@@ -143,7 +147,7 @@ class slider extends modules {
         }else{
             $output = '<p><i>Please add slides to the slider block!</i></p>';
         }
-        
+
         return $output;
     }
 
