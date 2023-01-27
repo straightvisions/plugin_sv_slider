@@ -115,6 +115,7 @@ class slider extends modules {
     // SERVER SIDE RENDERING ---------------------------------------------------------------------
 
     public function render_block_wrapper(array $attributes, $content): string {
+        $output = '';
         // set root selector
         $this->css_selector = $this->assign_css_selector($attributes);
         $content            = empty($content) ? $attributes['innerContent'] : $content;
@@ -129,13 +130,21 @@ class slider extends modules {
             $content .= '<script>swiffyslider.init();</script>';
         }
 
-        ob_start();
-        // output template
-        require($this->get_path('lib/frontend/tpl/slider.php'));
-        // output css vars
-        echo '<style>' . $this->get_css_vars($attributes['svSlider']) . '</style>';
+        $children_count = isset($attributes['svSlider']['childrenCount']) ? (int)$attributes['svSlider']['childrenCount'] : 0;
 
-        return ob_get_clean();
+        if($children_count > 0){
+            ob_start();
+            // output template
+            require($this->get_path('lib/frontend/tpl/slider.php'));
+            // output css vars
+            echo '<style>' . $this->get_css_vars($attributes['svSlider']) . '</style>';
+
+            $output = ob_get_clean();
+        }else{
+            $output = '<p><i>Please add slides to the slider block!</i></p>';
+        }
+        
+        return $output;
     }
 
     private function assign_css_selector(array $attributes) {
