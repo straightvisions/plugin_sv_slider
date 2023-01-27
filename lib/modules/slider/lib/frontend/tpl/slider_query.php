@@ -26,6 +26,7 @@ $classnames = implode(' ', array_filter([
 	$indicators['visible-sm'],
 ]));
 
+$html = '<p style="text-align:center;font-weight:bold;">Something went wrong with the query content!</p>';
 // render inner blocks first
 $blocks = parse_blocks($content);
 $content = '';
@@ -36,14 +37,23 @@ foreach ($blocks as $block) {
 
 // handle wrappers and class injection
 $dom = new DOMDocument();
-$dom->loadHTML($content);
+$dom->loadHTML($content, LIBXML_NOERROR);
 $xpath = new DOMXPath($dom);
-$wrapper = $xpath->query('//div')->item(0);
-$ul = $xpath->query('//ul')->item(0);
-$ul->setAttribute('class', 'slider-container');
-$lis = $xpath->query("./li", $ul);
-$wrapper->parentNode->replaceChild($ul, $wrapper);
-$html = $dom->saveHTML();
+
+if(
+    $xpath->query('//div')->item(0)
+	&& $xpath->query('//ul')->item(0)
+	&& $xpath->query('//li')->item(0)
+){
+    $wrapper = $xpath->query('//div')->item(0);
+    $ul = $xpath->query('//ul')->item(0);
+    $ul->setAttribute('class', 'slider-container');
+    $lis = $xpath->query("./li", $ul);
+    $wrapper->parentNode->replaceChild($ul, $wrapper);
+    $html = $dom->saveHTML();
+	$count = $lis->length;
+}
+
 ?>
 
 <<?php echo $tag . $id . ' ' . $attributes['_data'];?> class="<?php echo $classnames; ?>">
@@ -55,12 +65,11 @@ $html = $dom->saveHTML();
 
 <?php if($attributes['svSlider']['indicators-style'] !== 'none'){
 	$indicators = '<ul class="slider-indicators">';
-
-	$count = $lis->length;
-
     $indicators .= '<li class="active"></li>';
 
-	for($i = 2; $i <= $count; $i++){
+    $count = isset($attributes['svSlider']['childrenCount']) && (int)$attributes['svSlider']['childrenCount'] > 0 ? (int)$attributes['svSlider']['childrenCount'] : 1;
+
+    for($i = 2; $i <= $count; $i++){
         $indicators .= '<li></li>';
 	}
 

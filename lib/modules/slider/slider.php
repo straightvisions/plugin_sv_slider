@@ -124,6 +124,7 @@ class slider extends modules {
         $attributes['svSlider'] = json_decode($attributes['svSlider'], true);
         $attributes['className'] = $this->populate_class_name($attributes);
         $attributes['_data'] = $this->populate_data_attributes($attributes);
+        $slider_type = isset($attributes['svSlider']['sliderType']) ? $attributes['svSlider']['sliderType'] : 'default';
 
         //@todo send script with server side output in editor - init swiffy - doesn't work right now
         if (defined('REST_REQUEST') && REST_REQUEST) {
@@ -135,11 +136,11 @@ class slider extends modules {
         if($children_count > 0){
             ob_start();
             // output template
-            if(isset( $attributes['svSlider']['isQuerySlider'] ) && $attributes['svSlider']['isQuerySlider'] === true ){
-                require($this->get_path('lib/frontend/tpl/slider_query.php'));
-            }else{
-                require($this->get_path('lib/frontend/tpl/slider.php'));
+            switch($slider_type){
+                case 'query': require($this->get_path('lib/frontend/tpl/slider_query.php'));break;
+                default: require($this->get_path('lib/frontend/tpl/slider.php'));
             }
+
             // output css vars
             echo '<style>' . $this->get_css_vars($attributes['svSlider']) . '</style>';
 
