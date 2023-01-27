@@ -3,9 +3,7 @@
 		"core/group",
 		"core/media-text",
 		"core/image",
-		"core/cover",
-		"core/query",
-		"core/post-template"
+		"core/cover"
 	],
 	"allowedQueryBlocks": [
 		"core/query",
