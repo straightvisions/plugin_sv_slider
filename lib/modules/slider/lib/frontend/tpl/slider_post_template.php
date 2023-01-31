@@ -39,7 +39,7 @@ foreach ($blocks as $block) {
 
 // handle wrappers and class injection
 $dom = new DOMDocument();
-$dom->loadHTML($content, LIBXML_NOERROR);
+$dom->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', "UTF-8"), LIBXML_NOERROR);
 $xpath = new DOMXPath($dom);
 
 if(
