@@ -127,11 +127,11 @@ class slider extends modules {
         $slider_type = isset($attributes['svSlider']['sliderType']) ? $attributes['svSlider']['sliderType'] : 'default';
 
         // add missing vars for compatibility for older sliders
-        $attributes['svSlider']['indicators-style'] = isset($attributes['svSlider']['indicators-style']) ?? '';
-	    $attributes['svSlider']['indicators-dark'] = isset($attributes['svSlider']['indicators-dark']) ?? '';
-	    $attributes['svSlider']['indicators-outside'] = isset($attributes['svSlider']['indicators-outside']) ?? '';
-	    $attributes['svSlider']['indicators-highlight'] = isset($attributes['svSlider']['indicators-highlight']) ?? '';
-	    $attributes['svSlider']['indicators-visible-sm'] = isset($attributes['svSlider']['indicators-visible-sm']) ?? '';
+        $attributes['svSlider']['indicators-style'] = isset($attributes['svSlider']['indicators-style']) ? $attributes['svSlider']['indicators-style'] : '';
+	    $attributes['svSlider']['indicators-dark'] = isset($attributes['svSlider']['indicators-dark']) ? $attributes['svSlider']['indicators-dark'] : '';
+	    $attributes['svSlider']['indicators-outside'] = isset($attributes['svSlider']['indicators-outside']) ? $attributes['svSlider']['indicators-outside'] : '';
+	    $attributes['svSlider']['indicators-highlight'] = isset($attributes['svSlider']['indicators-highlight']) ? $attributes['svSlider']['indicators-highlight'] : '';
+	    $attributes['svSlider']['indicators-visible-sm'] = isset($attributes['svSlider']['indicators-visible-sm']) ? $attributes['svSlider']['indicators-visible-sm'] : '';
 
         //@todo send script with server side output in editor - init swiffy - doesn't work right now
         if (defined('REST_REQUEST') && REST_REQUEST) {
