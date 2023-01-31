@@ -137,7 +137,7 @@ class slider extends modules {
             ob_start();
             // output template
             switch($slider_type){
-                case 'query': require($this->get_path('lib/frontend/tpl/slider_query.php'));break;
+                case 'post-template': require($this->get_path('lib/frontend/tpl/slider_post_template.php'));break;
                 default: require($this->get_path('lib/frontend/tpl/slider.php'));
             }
 

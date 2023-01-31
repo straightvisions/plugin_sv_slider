@@ -5,8 +5,7 @@
 		"core/image",
 		"core/cover"
 	],
-	"allowedQueryBlocks": [
-		"core/query",
+	"allowedPostTemplateBlocks": [
 		"core/post-template"
 	],
 	"template": [
@@ -15,9 +14,9 @@
 			{}
 		]
 	],
-	"templateQuery": [
+	"templatePostTemplate": [
 		[
-			"core/query",
+			"core/post-template",
 			{}
 		]
 	]
