@@ -126,6 +126,7 @@ class slider extends modules {
         $attributes['_data'] = $this->populate_data_attributes($attributes);
         $slider_type = isset($attributes['svSlider']['sliderType']) ? $attributes['svSlider']['sliderType'] : 'default';
 
+        //@todo move attributes to a builder function
         // add missing vars for compatibility for older sliders
         $attributes['svSlider']['indicators-style'] = isset($attributes['svSlider']['indicators-style']) ? $attributes['svSlider']['indicators-style'] : '';
 	    $attributes['svSlider']['indicators-dark'] = isset($attributes['svSlider']['indicators-dark']) ? $attributes['svSlider']['indicators-dark'] : '';
@@ -145,6 +146,7 @@ class slider extends modules {
             // output template
             switch($slider_type){
                 case 'post-template': require($this->get_path('lib/frontend/tpl/slider_post_template.php'));break;
+                case 'woocommerce': require($this->get_path('lib/frontend/tpl/slider_woocommerce.php'));break;
                 default: require($this->get_path('lib/frontend/tpl/slider.php'));
             }
 
