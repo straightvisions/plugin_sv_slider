@@ -561,13 +561,6 @@
     .slider-nav-outside-expand .slider-nav {
         padding: 0;
     }
-    .slider-indicators-square.slider-indicators>*,
-    .slider-indicators-square .slider-indicators>*,
-    .slider-indicators-round.slider-indicators>*,
-    .slider-indicators-round .slider-indicators>* {
-        width: .3rem;
-        height: .3rem;
-    }
     .slider-indicators {
         margin-bottom: .5rem;
         display: none;
