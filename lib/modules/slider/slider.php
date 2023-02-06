@@ -40,6 +40,14 @@ class slider extends modules {
     }
 
     public function register_scripts(): slider {
+
+        // woocommerce detection
+        if ( class_exists( 'WooCommerce' ) ) {
+            $this->get_script('sv_slider_woocommerce_handpicked_products_css')
+                 ->set_path('lib/frontend/css/woocommerce/handpicked_products.css')
+                 ->set_is_enqueued();
+        }
+
         if (is_admin()) {
             ob_start();
             require($this->get_path('lib/backend/src/config.json'));
@@ -66,8 +74,8 @@ class slider extends modules {
 
             $this->get_script('sv_slider_common_css')
                  ->set_path('lib/frontend/css/common.css')
-                ->set_is_gutenberg()
-                ->set_is_backend()
+                 ->set_is_gutenberg()
+                 ->set_is_backend()
                  ->set_is_enqueued();
 
             $this->get_script('sv_slider_swiffy_slider_js')
@@ -93,6 +101,8 @@ class slider extends modules {
                  ->set_type('js')
                  ->set_is_enqueued();
         }
+
+
 
         return $this;
     }
