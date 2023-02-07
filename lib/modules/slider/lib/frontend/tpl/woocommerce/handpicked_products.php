@@ -49,20 +49,11 @@ if(
 ) {
 	// get the originally wrapper from the block -----------------------------------
     $wrapper = $xpath->query('//div')->item(0);
-    // add woocommerce related classes ---------------------------------------------
-	$wrapper_classes = $wrapper->getAttribute('class');
-    $classnames[] = 'wc-block-grid';
-	if(strpos($wrapper_classes, 'has-aligned-buttons')){
-        $classnames[] = 'has-aligned-buttons';
-	}
-
 	// handle ul and li ------------------------------------------------------------
     $ul = $xpath->query('//ul')->item(0);
     $ul->setAttribute('class', 'wc-block-grid__products slider-container');
     $lis  = $xpath->query("./li", $ul);
-
-	// replace div wrapper from the block ------------------------------------------
-    $wrapper->parentNode->replaceChild($ul, $wrapper);
+	$count = $lis->length;
     $html = $dom->saveHTML();
 }else{
     $html = '<p style="text-align:center;font-weight:bold;">No posts to display, please check your query block / filters!</p>';

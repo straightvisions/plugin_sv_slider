@@ -8,3 +8,7 @@
 .slider-woocommerce-type-handpicked-products .slider-container.wc-block-grid__products > .wc-block-grid__product{
 	border: none;
 }
+
+.slider-woocommerce-type-handpicked-products .wc-block-grid[class*="columns"] .wc-block-grid__product{
+	max-width:100%;
+}
