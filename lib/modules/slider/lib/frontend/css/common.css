@@ -137,5 +137,6 @@
 
 /* gutenberg specific mods - WooCommerce Product Image - experimental */
 .wp-block-straightvisions-sv-slider .slider-container .wc-block-components-product-image img{
-	max-width: -webkit-fill-available;
+	width: 100%;
+	height: 100%;
 }
