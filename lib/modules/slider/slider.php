@@ -2,16 +2,21 @@
 
 namespace sv_slider;
 
+require_once('frontend.php');
+
 class slider extends modules {
     private $css_selector = '';
     private $class_selector = '';
     private $css_generator = null;
+    private $Frontend = null;
 
     public function init() {
         $this->set_section_title(__('Slider', 'sv_slider'))
              ->set_section_type('settings')
              ->load_settings()
              ->get_root()->add_section($this);
+
+        $this->Frontend = new Frontend();
 
         add_action('init', array($this, 'register_block'));
         add_action('init', array($this, 'register_scripts'));
@@ -123,8 +128,8 @@ class slider extends modules {
     // SERVER SIDE RENDERING ---------------------------------------------------------------------
     // SERVER SIDE RENDERING ---------------------------------------------------------------------
     // SERVER SIDE RENDERING ---------------------------------------------------------------------
-
     public function render_block_wrapper(array $attributes, $content): string {
+        return $this->Frontend->render($attributes, $content);
         $output = '';
         // set root selector
         $this->css_selector = $this->assign_css_selector($attributes);
@@ -139,10 +144,10 @@ class slider extends modules {
         //@todo move attributes to a builder function
         // add missing vars for compatibility for older sliders
         $attributes['svSlider']['indicators-style'] = isset($attributes['svSlider']['indicators-style']) ? $attributes['svSlider']['indicators-style'] : '';
-	    $attributes['svSlider']['indicators-dark'] = isset($attributes['svSlider']['indicators-dark']) ? $attributes['svSlider']['indicators-dark'] : '';
-	    $attributes['svSlider']['indicators-outside'] = isset($attributes['svSlider']['indicators-outside']) ? $attributes['svSlider']['indicators-outside'] : '';
-	    $attributes['svSlider']['indicators-highlight'] = isset($attributes['svSlider']['indicators-highlight']) ? $attributes['svSlider']['indicators-highlight'] : '';
-	    $attributes['svSlider']['indicators-visible-sm'] = isset($attributes['svSlider']['indicators-visible-sm']) ? $attributes['svSlider']['indicators-visible-sm'] : '';
+        $attributes['svSlider']['indicators-dark'] = isset($attributes['svSlider']['indicators-dark']) ? $attributes['svSlider']['indicators-dark'] : '';
+        $attributes['svSlider']['indicators-outside'] = isset($attributes['svSlider']['indicators-outside']) ? $attributes['svSlider']['indicators-outside'] : '';
+        $attributes['svSlider']['indicators-highlight'] = isset($attributes['svSlider']['indicators-highlight']) ? $attributes['svSlider']['indicators-highlight'] : '';
+        $attributes['svSlider']['indicators-visible-sm'] = isset($attributes['svSlider']['indicators-visible-sm']) ? $attributes['svSlider']['indicators-visible-sm'] : '';
 
         //@todo send script with server side output in editor - init swiffy - doesn't work right now
         if (defined('REST_REQUEST') && REST_REQUEST) {
@@ -320,7 +325,7 @@ class slider extends modules {
 
         // autoplay static class
         $class_name .= isset($slider_attributes['--swiffy-slider-class-autoplay'])
-                      && $slider_attributes['--swiffy-slider-class-autoplay'] === true ? ' slider-nav-autoplay' : '';
+                       && $slider_attributes['--swiffy-slider-class-autoplay'] === true ? ' slider-nav-autoplay' : '';
 
         $class_name .= isset($slider_attributes['--swiffy-slider-class-autopause'])
                        && $slider_attributes['--swiffy-slider-class-autopause'] === true ? ' slider-nav-autopause' : '';
@@ -336,8 +341,8 @@ class slider extends modules {
 
         if(isset($slider_attributes['--swiffy-slider-data-autoplay-timeout'])){
             $data[] = 'data-slider-nav-autoplay-interval="'
-                . (int)$slider_attributes['--swiffy-slider-data-autoplay-timeout']
-                . '"';
+                      . (int)$slider_attributes['--swiffy-slider-data-autoplay-timeout']
+                      . '"';
         }
 
         return implode(' ', $data);
