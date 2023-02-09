@@ -135,6 +135,16 @@ class Frontend {
         return implode(' ', $this->get_attr('dataAttribute', []));
     }
 
+    private function get_slider_content(){
+        $output = '';
+        $blocks = parse_blocks($this->content);
+
+        foreach ($blocks as $block) {
+            $output .= render_block($block);
+        }
+        return $output;
+    }
+
     private function get_attr(string $name, $default = ''){
         return isset($this->attr[$name]) ? $this->attr[$name] : $default;
     }
@@ -150,7 +160,7 @@ class Frontend {
         return $key;
     }
 
-    private function get_path(string $path){
+    private function get_path(string $path = ''){
         return trailingslashit( dirname( __FILE__ ) ) . $path;
     }
 
@@ -319,10 +329,15 @@ class Frontend {
         $classnames_block = is_string($this->get_block_attr('className')) ? explode(' ', $this->get_block_attr('className')) : $this->get_block_attr('className', []);
         $classnames_slider = is_string($this->get_attr('className')) ? explode(' ', $this->get_attr('className')) : $this->get_attr('className', []);
 
-        // block unique selector class ----------------------------------------------------------
+        // block unique selector classes --------------------------------------------------------
         $classnames_block[] = $this->class_selector;
+        $classnames_block[] = 'slider-type-'.$this->get_attr('sliderType', 'default');
+        // 3rd party specific classes -----------------------------------------------------------
+        if($this->get_attr('sliderType') === 'woocommerce'){
+            $classnames_block[] = 'slider-type-woocommerce-'.$this->get_attr('sliderTypeWooCommerce', 'default');
+        }
         // alignment ----------------------------------------------------------------------------
-        $classnames_block[] = $this->get_block_attr('align');
+        $classnames_block[] = 'align'.$this->get_block_attr('align');
         // slider classes -----------------------------------------------------------------------
         $classnames_slider[] = "sv-slider-inner";
         $classnames_slider[] = "swiffy-slider";

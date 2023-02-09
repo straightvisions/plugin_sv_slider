@@ -8,9 +8,10 @@ echo $this->get_wrapper_class();
 		echo $this->get_slider_class();
 		echo $this->get_slider_data_attr();
 	?>>
-		<div class="slider-container">
-            <?php echo $this->content; ?>
-		</div>
+
+		<?php
+			require($this->get_path('/lib/frontend/tpl/'.str_replace('-','_', $this->get_attr('sliderType','default')).'.php'));
+		?>
 
 		<?php if(true === true) : ?>
 			<button type="button" class="slider-nav" aria-label="Go to previous"></button>
@@ -32,4 +33,4 @@ echo $this->get_wrapper_class();
         } ?>
 
 	</div>
-</<?php echo $this->get_block_attr('tag'); ?>>
+</<?php echo $this->get_wrapper_tag('tag'); ?>>
