@@ -356,7 +356,7 @@ class Frontend {
         $classnames_slider[] = $this->get_attr('indicators-dark', false) ? 'slider-indicators-dark' : '';
         $classnames_slider[] = $this->get_attr('indicators-outside', false) ? 'slider-indicators-outside' : '';
         $classnames_slider[] = $this->get_attr('indicators-highlight', false) ? 'slider-indicators-highlight' : '';
-        $classnames_slider[] = $this->get_attr('indicators-visible-sm', false) ? 'slider-indicators-visible-sm' : '';
+        $classnames_slider[] = $this->get_attr('indicators-visible-sm', false) ? 'slider-indicators-sm' : '';
 
         // remove duplicates and empty lines
         $classnames_block = array_unique(array_filter($classnames_block));
