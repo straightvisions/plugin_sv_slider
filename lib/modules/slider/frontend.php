@@ -15,10 +15,12 @@ class Frontend {
     private $slides_count = 0;
     // props are global attributes for the Service, not for the specific block
     private $props = [];
+    private $parent = null;
 
-    public function __construct(array $props = []){
+    public function __construct(array $props = [], $parent = null){
         $this->flush(); // init flush
         $this->props = $props; // assign props
+        $this->parent = $parent; // experimental
     }
 
     public function render(array $attributes, $content){
@@ -161,7 +163,8 @@ class Frontend {
     }
 
     private function get_path(string $path = ''){
-        return trailingslashit( dirname( __FILE__ ) ) . $path;
+        return $this->parent->get_path($path); // experimental
+        //return trailingslashit( dirname( __FILE__ ) ) . $path;
     }
 
     private function get_css_generator(){

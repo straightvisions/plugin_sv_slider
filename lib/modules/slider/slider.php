@@ -13,7 +13,7 @@ class slider extends modules {
              ->load_settings()
              ->get_root()->add_section($this);
 
-        $this->Frontend = new Frontend(['breakpoints'=>$this->get_breakpoints()]);
+        $this->Frontend = new Frontend(['breakpoints'=>$this->get_breakpoints()], $this);
 
         add_action('init', array($this, 'register_block'));
         add_action('init', array($this, 'register_scripts'));
