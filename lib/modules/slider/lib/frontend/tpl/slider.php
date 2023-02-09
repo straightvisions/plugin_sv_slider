@@ -1,56 +1,35 @@
-<?php
-$alignment = isset($attributes['align']) ? 'align' . $attributes['align'] : '';
+<<?php
+echo $this->get_wrapper_tag();
+echo $this->get_wrapper_id();
+echo $this->get_wrapper_class();
+?>>
+	<div
+	<?php
+		echo $this->get_slider_class();
+		echo $this->get_slider_data_attr();
+	?>>
+		<div class="slider-container">
+            <?php echo $this->content; ?>
+		</div>
 
-$indicators = [
-	'style' => $attributes['svSlider']['indicators-style'] ? 'slider-indicators-'.$attributes['svSlider']['indicators-style'] : '',
-	'dark' => $attributes['svSlider']['indicators-dark'] ? 'slider-indicators-dark' : '',
-	'outside' => $attributes['svSlider']['indicators-outside'] ? 'slider-indicators-outside' : '',
-	'highlight' => $attributes['svSlider']['indicators-highlight'] ? 'slider-indicators-highlight' : '',
-	'visible-sm' => $attributes['svSlider']['indicators-visible-sm'] ? 'slider-indicators-sm' : '',
-];
+		<?php if(true === true) : ?>
+			<button type="button" class="slider-nav" aria-label="Go to previous"></button>
+			<button type="button" class="slider-nav slider-nav-next" aria-label="Go to next"></button>
+		<?php endif; ?>
 
-$classnames = implode(' ', array_filter([
-    // Gutenberg classnames
-	$attributes['className'],
-    // block id selector class
-	 $this->class_selector,
-    // alignment
-    $alignment,
-	'swiffy-slider',
-	// setting based classes
-	'slider-nav-visible', // to be moved to setting
-	$indicators['style'],
-	$indicators['dark'],
-	$indicators['outside'],
-	$indicators['highlight'],
-	$indicators['visible-sm'],
-]));
-?>
+        <?php if($this->get_attr('indicators-style', 'none') !== 'none'){
+            $indicators = '<ul class="slider-indicators">';
 
-<<?php echo $tag . $id . ' ' . $attributes['_data'];?> class="<?php echo $classnames; ?>">
+            $indicators .= '<li class="active"></li>';
 
-<div class="slider-container">
-    <?php echo $content; ?>
-</div>
+            for($i = 2; $i <=  $this->slides_count; $i++){
+                $indicators .= '<li></li>';
+            }
 
-<button type="button" class="slider-nav" aria-label="Go to previous"></button>
-<button type="button" class="slider-nav slider-nav-next" aria-label="Go to next"></button>
+            $indicators .= '</ul>';
 
-<?php if($attributes['svSlider']['indicators-style'] !== 'none'){
-	$indicators = '<ul class="slider-indicators">';
+            echo $indicators;
+        } ?>
 
-	$count = isset($attributes['svSlider']['childrenCount']) && (int)$attributes['svSlider']['childrenCount'] > 0 ? (int)$attributes['svSlider']['childrenCount'] : 1;
-
-    $indicators .= '<li class="active"></li>';
-
-	for($i = 2; $i <= $count; $i++){
-        $indicators .= '<li></li>';
-	}
-
-    $indicators .= '</ul>';
-
-	echo $indicators;
-} ?>
-
-</<?php
-echo $tag ?>>
+	</div>
+</<?php echo $this->get_block_attr('tag'); ?>>

@@ -1,5 +1,7 @@
 /* remove theme spacing */
-.wp-block-straightvisions-sv-slider.swiffy-slider {
+.wp-block-straightvisions-sv-slider{}
+
+.wp-block-straightvisions-sv-slider > .swiffy-slider {
 	padding-left: 0 !important;
 	padding-right: 0 !important;
 	/* nav arrow mask vars */
@@ -12,28 +14,27 @@
 	/* custom vars */
 	--swiffy-slider-indicators-color: #FFFFFF;
 	--swiffy-slider-indicators-color-active: #00000;
-	
 }
 
-.wp-block-straightvisions-sv-slider.swiffy-slider > .slider-container > * {
+.wp-block-straightvisions-sv-slider > .swiffy-slider > .slider-container > * {
 	height: 100%;
 	overflow:hidden;
 }
 
-.wp-block-straightvisions-sv-slider.swiffy-slider > .slider-indicators{
+.wp-block-straightvisions-sv-slider > .swiffy-slider > .slider-indicators{
 	z-index:2;
 }
 
-.wp-block-straightvisions-sv-slider.swiffy-slider > .slider-indicators > *{
+.wp-block-straightvisions-sv-slider > .swiffy-slider > .slider-indicators > *{
 	background-color: var(--swiffy-slider-indicators-color);
 }
 
-.wp-block-straightvisions-sv-slider.swiffy-slider > .slider-indicators > .active{
+.wp-block-straightvisions-sv-slider > .swiffy-slider > .slider-indicators > .active{
 	background-color: var(--swiffy-slider-indicators-color-active);
 }
 
 /* gutenberg specific mods - global */
-.slider-item-ratio .slider-container>*:not(.wp-block-media-text):not(.wp-block-group)::after {
+.wp-block-straightvisions-sv-slider > .swiffy-slider.slider-item-ratio .slider-container>*:not(.wp-block-media-text):not(.wp-block-group)::after {
 	display: block;
 	padding-top: calc( 100% / (var(--swiffy-slider-item-ratio)));
 	content: "";
@@ -121,14 +122,14 @@
 }
 	
 /* fix z-index */
-.wp-block-straightvisions-sv-slider.swiffy-slider .slider-nav {
+.wp-block-straightvisions-sv-slider > .swiffy-slider .slider-nav {
 	display: var(--swiffy-slider-arrows-display);
 	z-index: 1;
 }
 
 /* fix mobile */
 @media (max-width: 62rem){ /* must be max-width - depends on native swiffy code */
-	.wp-block-straightvisions-sv-slider.swiffy-slider .slider-nav::after {
+	.wp-block-straightvisions-sv-slider > .swiffy-slider .slider-nav::after {
 		width: 1.75rem !important;
 		height: 1.75rem !important;
 		margin: 0.125rem !important;

@@ -13,13 +13,17 @@ class Frontend {
     private $content;
     private $children_count = 0;
     private $slides_count = 0;
+    // props are global attributes for the Service, not for the specific block
+    private $props = [];
 
-    public function __construct(){
+    public function __construct(array $props = []){
         $this->flush(); // init flush
+        $this->props = $props; // assign props
     }
 
     public function render(array $attributes, $content){
         $output = '';
+        // prepare everything
         $this->flush(); // forget everything from previous runs
         $this->set_attributes($attributes);
         $this->set_children_count();
@@ -28,11 +32,26 @@ class Frontend {
         // ----------------------------------------------------
         // ----------------------------------------------------
 
-
+        if($this->children_count > 0){
+            ob_start();
+            $this->render_css();
+            $this->render_content();
+            $output = ob_get_clean();
+        }else{
+            $output = '<p><i>Please add slides to the slider block!</i></p>';
+        }
         
         // ----------------------------------------------------
         // ----------------------------------------------------
         return $output;
+    }
+
+    private function render_content(){
+        require($this->get_path('lib/frontend/tpl/slider.php'));
+    }
+
+    private function render_css(){
+        echo '<style>' . $this->get_css_vars() . '</style>';
     }
 
     private function set_children_count(){
@@ -40,34 +59,18 @@ class Frontend {
     }
 
     private function set_slides_count(){
-        $ch = $this
-        $this->slides_count = $this->get_attr('childrenCount', 0);
+        $children = (int)$this->get_attr('childrenCount', 0);
+
+        //@todo indicators are not responsive!
+        $visible_slides_per_breakpoint = $this->get_attr('--swiffy-slider-item-count', ['Mobile'=>1]);
+        $mobile = (int) $visible_slides_per_breakpoint['Mobile'];
+        // we need at least one breakpoint with 1 slide
+        $mobile = $mobile > 0 ? $mobile : 1;
+        $count = ceil( $children / $mobile );
+
+        $this->slides_count = $count;
     }
 
-    // old
-    function xxxx(){
-
-        $children_count =
-
-        if($children_count > 0){
-            ob_start();
-            // output template
-            switch($slider_type){
-                case 'post-template': require($this->get_path('lib/frontend/tpl/slider_post_template.php'));break;
-                case 'woocommerce': require($this->get_path('lib/frontend/tpl/slider_woocommerce.php'));break;
-                default: require($this->get_path('lib/frontend/tpl/slider.php'));
-            }
-
-            // output css vars
-            echo '<style>' . $this->get_css_vars($this->attr) . '</style>';
-
-            $output = ob_get_clean();
-        }else{
-            $output = '<p><i>Please add slides to the slider block!</i></p>';
-        }
-
-        return $output;
-    }
 
     private function flush(){
         $this->attr = ['block'=>[]];
@@ -103,17 +106,33 @@ class Frontend {
             
             $this->attr[$this->sanitize_key($key)] = $val;
         }
-        
-        // some shorthand custom attributes
-        $this->attr['block']['tag'] = $this->get_block_attr('tagName', false) ?? 'div';
-        $this->attr['block']['id']  = $this->get_block_attr('anchor', false) ? ' id="'.$this->get_block_attr('anchor').'" ' : '';
         // populate data attributes
         $this->set_data_attributes();
         // get selectors for css and class
         $this->set_selectors();
         // populate class names for wrapper
-        $this->set_class_name();
+        $this->set_classnames();
 
+    }
+
+    private function get_wrapper_tag(){
+        return $this->get_block_attr('tagName', false) ?  $this->get_block_attr('tagName') : 'div';
+    }
+
+    private function get_wrapper_id(){
+        return $this->get_block_attr('anchor') !== '' ? ' id="'.$this->get_block_attr('anchor').'" ' : '';
+    }
+
+    private function get_wrapper_class(){
+        return ' class="' . implode(' ', $this->get_block_attr('className', [])).'" ';
+    }
+
+    private function get_slider_class(){
+        return ' class="' . implode(' ', $this->get_attr('className', [])).'" ';
+    }
+
+    private function get_slider_data_attr(){
+        return implode(' ', $this->get_attr('dataAttribute', []));
     }
 
     private function get_attr(string $name, $default = ''){
@@ -126,7 +145,6 @@ class Frontend {
 
     private function sanitize_key(string $key): string{
         if ( is_scalar( $key ) ) {
-            $key = trim('-');
             $key = preg_replace( '/[^a-z\d_\-]/i', '', $key );
         }
         return $key;
@@ -156,14 +174,18 @@ class Frontend {
 
         // set the class for injection in template
         $this->class_selector = 'wp-block-straightvisions-sv-slider-' . $blockId;
-        $this->css_selector = '.swiffy-slider.wp-block-straightvisions-sv-slider-' . $blockId;
+        $this->css_selector = '.wp-block-straightvisions-sv-slider-' . $blockId . ' .swiffy-slider';
+    }
+
+    private function get_breakpoints(){
+        return isset($this->props['breakpoints']) ? $this->props['breakpoints'] : ['mobile'=>0];
     }
 
     // CSS PIPE STEP 0A ---------------------------------------------------------------------
     
-    private function get_css_vars($data): string {
+    private function get_css_vars(): string {
         $output = '';
-        $list   = $this->get_media_query_list($data);
+        $list   = $this->get_media_query_list($this->attr);
 
         if (empty($list) === false) {
             $output = $this->parse_media_query_list($list);
@@ -291,20 +313,42 @@ class Frontend {
         return $inner_blocks;
     }
 
-    private function set_class_name(){
-        $class_name = $this->attr['block']['className'] ?? '';
+    private function set_classnames(){
+        // get classnames attr from block attributes, it's from Gutenberg, so it's a string mostly
+        // "className" is the key provided from Gutenberg, so we will keep it that way
+        $classnames_block = is_string($this->get_block_attr('className')) ? explode(' ', $this->get_block_attr('className')) : $this->get_block_attr('className', []);
+        $classnames_slider = is_string($this->get_attr('className')) ? explode(' ', $this->get_attr('className')) : $this->get_attr('className', []);
 
-        // autoplay static class
-        $class_name .= $this->get_attr('--swiffy-slider-class-autoplay', false)
+        // block unique selector class ----------------------------------------------------------
+        $classnames_block[] = $this->class_selector;
+        // alignment ----------------------------------------------------------------------------
+        $classnames_block[] = $this->get_block_attr('align');
+        // slider classes -----------------------------------------------------------------------
+        $classnames_slider[] = "sv-slider-inner";
+        $classnames_slider[] = "swiffy-slider";
+        $classnames_slider[] = "slider-nav-visible"; //@todo make a setting
+        // autoplay static class ----------------------------------------------------------------
+        $classnames_slider[] = $this->get_attr('--swiffy-slider-class-autoplay', false)
                        && $this->attr['--swiffy-slider-class-autoplay'] === true ? ' slider-nav-autoplay' : '';
 
-        $class_name .=  $this->get_attr('--swiffy-slider-class-autopause', false)
+        $classnames_slider[] =  $this->get_attr('--swiffy-slider-class-autopause', false)
                        && $this->attr['--swiffy-slider-class-autopause'] === true ? ' slider-nav-autopause' : '';
+        // item view ratio class --------------------------------------------------------------
+        $classnames_slider[] = $this->item_ratio_is_set() ? ' slider-item-ratio' : '';
+        // indicators --------------------------------------------------------------------------
+        $classnames_slider[] = $this->get_attr('indicators-style', false) ? 'slider-indicators-' . $this->get_attr('indicators-style') : '';
+        $classnames_slider[] = $this->get_attr('indicators-style', false) ? 'slider-indicators-' . $this->get_attr('indicators-style') : '';
+        $classnames_slider[] = $this->get_attr('indicators-dark', false) ? 'slider-indicators-dark' : '';
+        $classnames_slider[] = $this->get_attr('indicators-outside', false) ? 'slider-indicators-outside' : '';
+        $classnames_slider[] = $this->get_attr('indicators-highlight', false) ? 'slider-indicators-highlight' : '';
+        $classnames_slider[] = $this->get_attr('indicators-visible-sm', false) ? 'slider-indicators-visible-sm' : '';
 
-        // item view ratio class
-        $class_name .= $this->item_ratio_is_set() ? ' slider-item-ratio' : '';
-
-        $this->attr['block']['className'] = $class_name;
+        // remove duplicates and empty lines
+        $classnames_block = array_unique(array_filter($classnames_block));
+        $classnames_slider = array_unique(array_filter($classnames_slider));
+        // set
+        $this->attr['block']['className'] = $classnames_block;
+        $this->attr['className'] = $classnames_slider;
     }
 
     private function set_data_attributes(){
@@ -316,7 +360,7 @@ class Frontend {
                       . '"';
         }
 
-        $this->attr['dataAttribute'] = implode(' ', $data);
+        $this->attr['dataAttribute'] = $data;
     }
 
     private function item_ratio_is_set(): bool {
