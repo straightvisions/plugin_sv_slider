@@ -3,6 +3,11 @@
 	margin:0;
 	padding:0;
 	list-style:none;
+	grid: auto / auto-flow max-content;
+	grid-auto-rows: 100%;
+	grid-auto-columns: var(--swiffy-slider-item-width);
+	grid-auto-flow: column;
+	grid-gap: var(--swiffy-slider-item-gap);
 }
 
 .slider-type-woocommerce-handpicked-products .slider-container.wc-block-grid__products > .wc-block-grid__product{
