@@ -1,6 +1,6 @@
 <?php
 /*
-Version: 2.0.00
+Version: 2.0.10
 Plugin Name: SV Slider
 Text Domain: sv_slider
 Description: Gutenberg Block Slider
