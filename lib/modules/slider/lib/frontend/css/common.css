@@ -120,6 +120,12 @@
 	height: 100% !important;
 	object-fit: cover;
 }
+
+/* gutenberg specific mods - WooCommerce Product Image - experimental */
+.wp-block-straightvisions-sv-slider .slider-container .wc-block-components-product-image img{
+	width: 100%;
+	height: 100%;
+}
 	
 /* fix z-index */
 .wp-block-straightvisions-sv-slider > .swiffy-slider .slider-nav {
@@ -134,10 +140,4 @@
 		height: 1.75rem !important;
 		margin: 0.125rem !important;
 	}
-}
-
-/* gutenberg specific mods - WooCommerce Product Image - experimental */
-.wp-block-straightvisions-sv-slider .slider-container .wc-block-components-product-image img{
-	width: 100%;
-	height: 100%;
 }
