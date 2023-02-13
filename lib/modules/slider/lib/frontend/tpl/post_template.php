@@ -18,7 +18,7 @@
 	    $html = $dom->saveHTML();
 	}else{
 		$html = '<p style="text-align:center;font-weight:bold;">No posts to display, please check your query block / filters!</p>';
-	    $count = 0;
+	    $count = $this->set_slides_count(0);
 	}
 
 	echo $html;

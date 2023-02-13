@@ -60,8 +60,8 @@ class Frontend {
         $this->children_count = $this->get_attr('childrenCount', 0);
     }
 
-    private function set_slides_count(){
-        $children = (int)$this->get_attr('childrenCount', 0);
+    private function set_slides_count($children = false){
+        $children = $children !== false ? (int)$children : (int)$this->get_attr('childrenCount', 0);
 
         //@todo indicators are not responsive!
         $visible_slides_per_breakpoint = $this->get_attr('--swiffy-slider-item-count', ['Mobile'=>1]);

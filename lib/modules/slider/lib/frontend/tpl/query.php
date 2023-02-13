@@ -17,7 +17,7 @@
 	    $lis = $xpath->query("./li", $ul);
 	    $wrapper->parentNode->replaceChild($ul, $wrapper);
 	    $html = $dom->saveHTML();
-		$count = $lis->length;
+		$count = $this->set_slides_count($lis->length);
 	}
 
 	echo $html;

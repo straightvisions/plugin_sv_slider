@@ -16,11 +16,11 @@
 	    $ul = $xpath->query('//ul')->item(0);
 	    $ul->setAttribute('class', 'wc-block-grid__products slider-container');
 	    $lis  = $xpath->query("./li", $ul);
-		$count = $lis->length;
+		$count = $this->set_slides_count($lis->length);
 	    $html = $dom->saveHTML();
 	}else{
 	    $html = '<p style="text-align:center;font-weight:bold;">No posts to display, please check your query block / filters!</p>';
-	    $count = 0;
+	    $count = $this->set_slides_count(0);
 	}
 
 	echo $html;
