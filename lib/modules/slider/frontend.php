@@ -39,6 +39,9 @@ class Frontend {
             $this->render_css();
             $this->render_content();
             $output = ob_get_clean();
+
+			// enqueue scripts
+	        $this->parent->enqueue_scripts();
         }else{
             $output = '<p><i>Please add slides to the slider block!</i></p>';
         }
