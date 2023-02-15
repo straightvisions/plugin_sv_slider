@@ -223,7 +223,6 @@
     border: 0;
     background-color: transparent;
     cursor: pointer;
-    padding: 0;
     visibility: hidden;
     opacity: 0.8;
     transition: visibility 0.1s, opacity 0.2s linear;
