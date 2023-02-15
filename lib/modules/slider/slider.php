@@ -66,9 +66,7 @@ class slider extends modules {
 
 	public function enqueue_scripts(): slider {
 		if (is_admin()) {
-			ob_start();
-			require($this->get_path('lib/backend/src/config.json'));
-			$config = json_decode(ob_get_clean());
+			$config = json_decode(file_get_contents($this->get_path('lib/backend/src/config.json')));
 
 			$this->get_script('editor_script')->set_localized(
 				array_merge(
