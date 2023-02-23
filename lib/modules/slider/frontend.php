@@ -190,7 +190,7 @@ class Frontend {
 
         // set the class for injection in template
         $this->class_selector = 'wp-block-straightvisions-sv-slider-' . $blockId;
-        $this->css_selector = '.wp-block-straightvisions-sv-slider-' . $blockId . ' .swiffy-slider';
+        $this->css_selector = '.wp-block-straightvisions-sv-slider.wp-block-straightvisions-sv-slider-' . $blockId . ' .swiffy-slider';
     }
 
     private function get_breakpoints(){
