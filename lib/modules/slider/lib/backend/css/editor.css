@@ -73,3 +73,8 @@
 	max-width: 100% !important;
 	position: initial;
 }
+
+.wp-block-straightvisions-sv-slider .wc-block-grid,
+.wp-block-straightvisions-sv-slider .wc-block-grid *{
+	pointer-events: none;
+}

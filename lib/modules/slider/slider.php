@@ -49,6 +49,11 @@ class slider extends modules {
 	         ->set_is_gutenberg()
 	         ->set_is_backend();
 
+        $this->get_script('editor_css')
+             ->set_path('lib/backend/css/editor.css')
+             ->set_is_gutenberg()
+             ->set_is_backend();
+
 		// Common
 	    $this->get_script('common')
 	         ->set_path('lib/frontend/css/common.css')
@@ -58,6 +63,9 @@ class slider extends modules {
         // WooCommerce
 	    $this->get_script('wc_handpicked_products')
             ->set_path('lib/frontend/css/woocommerce/handpicked_products.css');
+
+        $this->get_script('wc_product_new')
+             ->set_path('lib/frontend/css/woocommerce/product_new.css');
 
 		add_action('admin_init', array($this, 'enqueue_scripts'));
 
@@ -87,6 +95,11 @@ class slider extends modules {
 			$this->get_script('wc_handpicked_products')->set_is_enqueued();
 		}
 
-		return $this;
+        if ( $this->has_block_frontend('woocommerce/product-new') ) {
+            $this->get_script('wc_product_new')->set_is_enqueued();
+        }
+
+
+        return $this;
 	}
 }

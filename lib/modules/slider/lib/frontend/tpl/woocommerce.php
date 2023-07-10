@@ -1,5 +1,5 @@
 <?php
-$slider_type_woocommerce = isset($attributes['svSlider']['sliderType']) ? $attributes['svSlider']['sliderType'] : 'default';
+$slider_type_woocommerce = $this->get_attr('sliderTypeWooCommerce','default');
 $slider_type_woocommerce = str_replace('-', '_', $slider_type_woocommerce);
 
 require($this->get_path('lib/frontend/tpl/woocommerce/'.$slider_type_woocommerce.'.php'));
