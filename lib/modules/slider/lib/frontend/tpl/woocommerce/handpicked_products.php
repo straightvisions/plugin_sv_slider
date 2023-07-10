@@ -1,11 +1,13 @@
 <?php
-	$content = $this->get_slider_content();
+	$content = empty($this->get_slider_content()) ? '<p></p>' : $this->get_slider_content();
+
 	// handle wrappers and class injection ---------------------------------------------
 	$dom = new DOMDocument();
 	$dom->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', "UTF-8"), LIBXML_NOERROR);
 	$xpath = new DOMXPath($dom);
 
 	if(
+
 	    $xpath->query('//div')->item(0)
 	    && $xpath->query('//ul')->item(0)
 	    && $xpath->query('//li')->item(0)
