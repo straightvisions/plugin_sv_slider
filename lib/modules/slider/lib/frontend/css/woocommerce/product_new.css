@@ -17,3 +17,9 @@
 .slider-type-woocommerce-product-new .wc-block-grid[class*="columns"] .wc-block-grid__product{
 	max-width:100%;
 }
+
+.slider-type-woocommerce-product-new .wc-block-grid[class*="columns"] .wc-block-grid__product-image,
+.slider-type-woocommerce-product-new .wc-block-grid[class*="columns"] .wc-block-grid__product-image img,
+.slider-type-woocommerce-product-new .wc-block-grid[class*="columns"] .wc-block-grid__product-image picture{
+	max-width:100%;
+}
