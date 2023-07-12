@@ -61,10 +61,10 @@ class slider extends modules {
 		     ->set_deps(array($this->get_active_core()->get_script('swiffy')->get_handle()));
 
         // WooCommerce
-	    $this->get_script('wc_handpicked_products')
+	    $this->get_script('sv_slider_woocommerce_handpicked_products')
             ->set_path('lib/frontend/css/woocommerce/handpicked_products.css');
 
-        $this->get_script('wc_product_new')
+        $this->get_script('sv_slider_woocommerce_product_new')
              ->set_path('lib/frontend/css/woocommerce/product_new.css');
 
 		add_action('admin_init', array($this, 'enqueue_scripts'));
@@ -92,11 +92,11 @@ class slider extends modules {
 
 		// WooCommerce
 		if ( $this->has_block_frontend('woocommerce/handpicked-products') ) {
-			$this->get_script('wc_handpicked_products')->set_is_enqueued();
+			$this->get_script('sv_slider_woocommerce_handpicked_products')->set_is_enqueued();
 		}
 
         if ( $this->has_block_frontend('woocommerce/product-new') ) {
-            $this->get_script('wc_product_new')->set_is_enqueued();
+            $this->get_script('sv_slider_woocommerce_product_new')->set_is_enqueued();
         }
 
 
