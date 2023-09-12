@@ -42,6 +42,10 @@ class slider extends modules {
 		         $this->get_url('lib/frontend/js/swiffy-slider.js')
 	         );
 
+	    $this->get_script('swiffy_responsive_indicators_js')
+	         ->set_path('lib/frontend/js/swiffy-slider-responsive-indicators.js')
+	         ->set_type('js');
+
 		// Admin Scripts
 	    $this->get_script('editor_script')
 	         ->set_path('lib/backend/js/block.build.js')
@@ -88,6 +92,7 @@ class slider extends modules {
 			$this->lib_enqueue('swiffy');
 		}
 
+		$this->get_script('swiffy_responsive_indicators_js')->set_is_enqueued();
 		$this->get_script('common')->set_is_enqueued();
 
 		// WooCommerce
