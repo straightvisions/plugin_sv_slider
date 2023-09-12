@@ -1,6 +1,5 @@
 /* remove theme spacing */
-.wp-block-straightvisions-sv-slider {
-}
+.wp-block-straightvisions-sv-slider{}
 
 .wp-block-straightvisions-sv-slider > .swiffy-slider {
 	padding-left: 0 !important;
@@ -19,30 +18,30 @@
 
 .wp-block-straightvisions-sv-slider > .swiffy-slider > .slider-container > * {
 	height: 100%;
-	overflow: hidden;
+	overflow:hidden;
 }
 
-.wp-block-straightvisions-sv-slider > .swiffy-slider > .slider-indicators {
-	z-index: 2;
+.wp-block-straightvisions-sv-slider > .swiffy-slider > .slider-indicators{
+	z-index:2;
 }
 
-.wp-block-straightvisions-sv-slider > .swiffy-slider > .slider-indicators > * {
+.wp-block-straightvisions-sv-slider > .swiffy-slider > .slider-indicators > *{
 	background-color: var(--swiffy-slider-indicators-color);
 }
 
-.wp-block-straightvisions-sv-slider > .swiffy-slider > .slider-indicators > .active {
+.wp-block-straightvisions-sv-slider > .swiffy-slider > .slider-indicators > .active{
 	background-color: var(--swiffy-slider-indicators-color-active);
 }
 
 /* gutenberg specific mods - global */
-.wp-block-straightvisions-sv-slider > .swiffy-slider.slider-item-ratio .slider-container > *:not(.wp-block-media-text):not(.wp-block-group)::after {
+.wp-block-straightvisions-sv-slider > .swiffy-slider.slider-item-ratio .slider-container>*:not(.wp-block-media-text):not(.wp-block-group)::after {
 	display: block;
-	padding-top: calc(100% / (var(--swiffy-slider-item-ratio)));
+	padding-top: calc( 100% / (var(--swiffy-slider-item-ratio)));
 	content: "";
 }
 
 /* gutenberg specific mods - images */
-.wp-block-straightvisions-sv-slider .slider-container > .wp-block-image {
+.wp-block-straightvisions-sv-slider .slider-container > .wp-block-image{
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -59,8 +58,8 @@
 }
 
 /* gutenberg specific mods - covers */
-.slider-item-ratio .slider-container > .wp-block-cover {
-	min-height: revert;
+.slider-item-ratio .slider-container > .wp-block-cover{
+	min-height:revert;
 }
 
 .slider-item-ratio .slider-container > .wp-block-cover > picture > img {
@@ -75,13 +74,13 @@
 /* gutenberg specific mods - media-text */
 .slider-item-ratio .slider-container > .wp-block-media-text > figure:after {
 	display: block;
-	padding-top: calc(100% / (var(--swiffy-slider-item-ratio)));
+	padding-top: calc( 100% / (var(--swiffy-slider-item-ratio)));
 	content: "";
 }
 
 .slider-item-ratio .slider-container > .wp-block-media-text,
 .slider-item-ratio .slider-container > .wp-block-media-text.is-image-fill .wp-block-media-text__media {
-	min-height: revert;
+	min-height:revert;
 }
 
 .slider-item-ratio .slider-container > .wp-block-media-text > figure > img,
@@ -106,14 +105,14 @@
 }
 
 /* gutenberg specific mods - group - experimental */
-.slider-item-ratio .slider-container > .wp-block-group {
-	overflow-x: hidden;
-	height: 100%;
-	max-height: calc(100% / (var(--swiffy-slider-item-ratio))) !important;
+.slider-item-ratio .slider-container > .wp-block-group{
+	overflow-x:hidden;
+	height:100%;
+	max-height: calc( 100% / (var(--swiffy-slider-item-ratio))) !important;
 }
 
 /* gutenberg specific mods - query - experimental */
-.slider-item-ratio .slider-container > .wp-block-query > * {
+.slider-item-ratio .slider-container > .wp-block-query > *{
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -123,11 +122,11 @@
 }
 
 /* gutenberg specific mods - WooCommerce Product Image - experimental */
-.wp-block-straightvisions-sv-slider .slider-container .wc-block-components-product-image img {
+.wp-block-straightvisions-sv-slider .slider-container .wc-block-components-product-image img{
 	width: 100%;
 	height: 100%;
 }
-
+	
 /* fix z-index */
 .wp-block-straightvisions-sv-slider > .swiffy-slider .slider-nav {
 	display: var(--swiffy-slider-arrows-display);
@@ -135,8 +134,7 @@
 }
 
 /* fix mobile */
-@media (max-width: 62rem) {
-	/* must be max-width - depends on native swiffy code */
+@media (max-width: 62rem){ /* must be max-width - depends on native swiffy code */
 	.wp-block-straightvisions-sv-slider > .swiffy-slider .slider-nav::after {
 		width: 1.75rem !important;
 		height: 1.75rem !important;

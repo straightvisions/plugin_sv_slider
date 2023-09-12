@@ -1,2 +1,3 @@
 <?php
-    require('handpicked_products.php');
+
+require('handpicked_products.php');
