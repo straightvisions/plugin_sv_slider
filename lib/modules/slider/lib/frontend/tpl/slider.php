@@ -5,7 +5,7 @@ echo $this->get_wrapper_class();
 ?>>
 <div
 	<?php
-	echo $this->get_slider_class();
+	echo $this->get_slider_class(['slider-nav-page']); // @todo implement slider-nav-page logic in block
 	echo $this->get_slider_data_attr();
 	?>>
 

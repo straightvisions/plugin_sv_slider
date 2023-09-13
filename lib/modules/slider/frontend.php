@@ -132,8 +132,8 @@ class Frontend {
         return ' class="' . implode(' ', $this->get_block_attr('className', [])).'" ';
     }
 
-    private function get_slider_class(){
-        return ' class="' . implode(' ', $this->get_attr('className', [])).'" ';
+    private function get_slider_class(array $custom_class_names = []){
+        return ' class="' . implode(' ', array_merge($this->get_attr('className', []), $custom_class_names)).'" ';
     }
 
     private function get_slider_data_attr(){
