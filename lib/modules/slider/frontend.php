@@ -128,8 +128,11 @@ class Frontend {
         return $this->get_block_attr('anchor') !== '' ? ' id="'.$this->get_block_attr('anchor').'" ' : '';
     }
 
-    private function get_wrapper_class(){
-        return ' class="' . implode(' ', $this->get_block_attr('className', [])).'" ';
+    private function get_wrapper_class(array $custom_class_names = []){
+		$default = ['wp-block-straightvisions-sv-slider'];
+		$block = $this->get_block_attr('className', []);
+		$class_names = array_merge($default, $block, $custom_class_names);
+        return ' class="' . implode(' ', $class_names).'" ';
     }
 
     private function get_slider_class(array $custom_class_names = []){
