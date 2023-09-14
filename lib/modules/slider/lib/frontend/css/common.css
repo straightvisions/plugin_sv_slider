@@ -1,9 +1,4 @@
 /* remove theme spacing */
-.wp-block-straightvisions-sv-slider {
-}
-.slider-container > .active{
-	border:1px solid red;
-}
 .wp-block-straightvisions-sv-slider > .swiffy-slider {
 	padding-left: 0 !important;
 	padding-right: 0 !important;
