@@ -29,17 +29,17 @@ class slider extends modules {
 	    $this->get_active_core()
 	         ->get_script('swiffy')
 	         ->set_path(
-				 $this->get_path('lib/frontend/css/swiffy-slider-modified.css'),
+				 $this->get_path('lib/frontend/css/sv-swiffy-slider.css'),
 				 true,
-		         $this->get_url('lib/frontend/css/swiffy-slider-modified.css')
+		         $this->get_url('lib/frontend/css/sv-swiffy-slider.css')
 	         );
 
 		$this->get_active_core()
 	         ->get_script('swiffy_js')
 	         ->set_path(
-				 $this->get_path('lib/frontend/js/swiffy-slider.js'),
+				 $this->get_path('lib/frontend/js/sv-swiffy-slider.js'),
 				 true,
-		         $this->get_url('lib/frontend/js/swiffy-slider.js')
+		         $this->get_url('lib/frontend/js/sv-swiffy-slider.js')
 	         );
 
 	    $this->get_script('swiffy_responsive_indicators_js')
