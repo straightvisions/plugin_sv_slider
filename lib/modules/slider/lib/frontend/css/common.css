@@ -30,6 +30,9 @@
 .wp-block-straightvisions-sv-slider > .swiffy-slider > .slider-indicators > .active {
 	background-color: var(--swiffy-slider-indicators-color-active);
 }
+.wp-block-straightvisions-sv-slider > .swiffy-slider > .slider-indicators > li:first-child:last-child {
+	display:none;
+}
 
 /* gutenberg specific mods - global */
 .wp-block-straightvisions-sv-slider > .swiffy-slider.slider-item-ratio .slider-container > *:not(.wp-block-media-text):not(.wp-block-group)::after {
