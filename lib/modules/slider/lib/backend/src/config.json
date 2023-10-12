@@ -3,7 +3,8 @@
 		"core/group",
 		"core/media-text",
 		"core/image",
-		"core/cover"
+		"core/cover",
+		"core/quote"
 	],
 	"allowedPostTemplateBlocks": [
 		"core/post-template"
