@@ -4,7 +4,7 @@ $content = $this->get_slider_content();
 
 // handle wrappers and class injection
 $dom = new DOMDocument();
-$dom->loadHTML($content, LIBXML_NOERROR);
+$dom->loadHTML($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD | LIBXML_NOERROR);
 $xpath = new DOMXPath($dom);
 
 if (
@@ -17,7 +17,7 @@ if (
 	$ul->setAttribute('class', 'slider-container');
 	$lis = $xpath->query("./li", $ul);
 	$wrapper->parentNode->replaceChild($ul, $wrapper);
-	$html  = $dom->saveHTML();
+	$html  = $dom->saveHTML($dom->documentElement); // Save the entire document without DOCTYPE
 	$count = $this->set_slides_count($lis->length);
 }
 
