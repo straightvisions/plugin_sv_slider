@@ -22,3 +22,7 @@ if (
 	$html  = $dom->saveHTML($dom->documentElement); // Save the entire document without DOCTYPE
 } else {
 	$html  = '<p style="text-align:center;font-weight:bold;">No posts to display, please check your query block / filters!</p>';
+	$count = $this->set_slides_count(0);
+}
+
+echo $html;
