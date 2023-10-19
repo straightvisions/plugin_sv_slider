@@ -15,8 +15,12 @@
 }
 
 .wp-block-straightvisions-sv-slider > .swiffy-slider > .slider-container > * {
-	height: 100%;
+	height: 99%;
 	overflow: hidden;
+}
+
+.wp-block-straightvisions-sv-slider > .swiffy-slider > .slider-container > * > *{
+	max-height: 99%;
 }
 
 .wp-block-straightvisions-sv-slider > .swiffy-slider > .slider-indicators {
