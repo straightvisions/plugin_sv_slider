@@ -4,7 +4,7 @@ $content = $this->get_slider_content();
 
 // handle wrappers and class injection
 $dom = new DOMDocument();
-$dom->loadHTML($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD | LIBXML_NOERROR);
+$dom->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', "UTF-8"), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD | LIBXML_NOERROR);
 $xpath = new DOMXPath($dom);
 
 if (
