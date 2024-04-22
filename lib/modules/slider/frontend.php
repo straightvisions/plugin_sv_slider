@@ -129,7 +129,7 @@ class Frontend {
 	}
 
 	private function get_wrapper_class(array $custom_class_names = []){
-		$default = ['wp-block-straightvisions-sv-slider slider-nav-scrollbar'];
+		$default = ['wp-block-straightvisions-sv-slider'];
 		$block = $this->get_block_attr('className', []);
 		$class_names = array_merge($default, $block, $custom_class_names);
 		return ' class="' . implode(' ', $class_names).'" ';
